@@ -266,6 +266,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.FGI_toolButton.setIcon(QIcon('ui/ico/TemplateIcon/FG-I.ico'))
         self.FGI_toolButton.setIconSize(QSize(32, 32))
         #
+        self.graphicsView.setBackground('white')
         self.UBorder = self.graphicsView.addPlot(row=0, col=0, rowspan=1, enableMouse=False, enableMenu=False,
                                                  title="<font size=3><b>MSASECT2</b><br>{}".format(
                                                      datetime.date.today().strftime('20%y-%m-%d')))

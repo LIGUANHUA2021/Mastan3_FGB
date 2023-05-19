@@ -128,9 +128,9 @@ def OutlinePlot(ViewBox):
                     Lines[i][1] = msaFEModel.Point.ID[msaFEModel.Outline.PointJ[OutlineID[i]]]
                     ## Define the line style for each connection (this is optional)
                     ColorName = hex2color(msaFEModel.Mat.Color[msaFEModel.Group.MatID[msaFEModel.Outline.GroupID[OutlineID[i]]]])
-                    LType[i] = (ColorName[0] * 255,
-                                ColorName[1] * 255,
-                                ColorName[2] * 255,
+                    LType[i] = (ColorName[0] * 0,
+                                ColorName[1] * 0,
+                                ColorName[2] * 0,
                                 255, 2)
                 ## Update the graph
                 SectPlot.setData(pos=Points,
@@ -289,7 +289,7 @@ def FiberPlot(ViewBox, ClChecked):
                     Lines[i * 4 + 3][0] = msaModel.Node.ID[msaModel.Fiber.NodeL[FiberID[i]]]
                     Lines[i * 4 + 3][1] = msaModel.Node.ID[msaModel.Fiber.NodeI[FiberID[i]]]
                 for i in range(msaModel.Fiber.Count * 4):
-                    LType[i] = (255, 255, 255, 100, 1)
+                    LType[i] = (0, 0, 0, 100, 1)
                 ## Update the graph
                 FiberPlot.setData(pos=Points,
                                   adj=Lines,
@@ -319,7 +319,7 @@ def FiberPlot(ViewBox, ClChecked):
                 for i in range(MeshSegment.Count):
                     Lines[i][0] = MeshNode.ID[MeshSegment.NodeI[FiberID[i]]]
                     Lines[i][1] = MeshNode.ID[MeshSegment.NodeJ[FiberID[i]]]
-                    LType[i] = (255, 255, 255, 100, 1)
+                    LType[i] = (0, 0, 0, 100, 1)
                 # Update the graph
                 FiberPlot.setData(pos=Points, adj=Lines, pen=LType, size=0, symbol=['o'] * MeshNode.Count, brush=pg.mkColor('r'), pxMode=True)
 
