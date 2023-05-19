@@ -195,12 +195,14 @@ class MeshLog:
 
 
 class BPLog:
-    def CalSectProp(self):
+    @staticmethod
+    def CalSectProp(Fiber):
         tOutput = "\n"
         tOutput += "********************************************************************************\n"
         tOutput += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SOLUTION START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
         tOutput += "********************************************************************************\n\n"
         tOutput += 'Calculating Section Properties...' + '\n'
+        tOutput += "\tNUM. OF Fibers.... = {}\n".format(Fiber.Count)
         return tOutput
 
     def CalTorsionProp(self):

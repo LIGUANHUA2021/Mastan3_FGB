@@ -17,17 +17,17 @@ class MSASECT2APP(QApplication):
         self.setWindowIcon(QIcon('ui/ico/MSASect2.ico'))
 
         # Create and configure the splash screen
-        self.splash = SplashScreen('ui/Template/SplashScreen.png')
-        self.splash.show()
+        # self.splash = SplashScreen('ui/Template/SplashScreen.png')
+        # self.splash.show()
 
         # Set up the QTimer
-        QTimer().singleShot(2000, self.launch_main_window)  # Wait for 3 seconds
+        QTimer().singleShot(0, self.launch_main_window)  # Wait for 3 seconds
         #
         Configuration.basedir = os.path.dirname(__file__)
 
     def launch_main_window(self):
         # Close the splash screen and open the main window
-        self.splash.close()
+        # self.splash.close()
         self.main = MainWindow()
         self.main.show()
 

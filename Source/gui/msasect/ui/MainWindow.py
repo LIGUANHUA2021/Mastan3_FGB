@@ -126,6 +126,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.statusinfo_1=QLabel('Last Update:' + Program.Revised)
         self.statusBar_1 = QLabel('{:<40}'.format(' Educational and research use only.'))
         tdate = datetime.datetime.today()
+        self.Centerline_radioButton.setEnabled(False)
+        self.Outline_radioButton.setChecked(True)
+        self.Centerline_label_2.setStyleSheet("*{    \n"
+                                        "    color: rgb(80, 80, 80);\n"
+                                        "}\n"
+                                        "")
         self.statusBar_2 = QLabel(
             '{:^40}'.format(' Copyright © ' + str(tdate.year) + ' Siwei Liu and Ronald D. Ziemian, All Right Reserved.'))
         self.status.addWidget(self.statusBar_1, 1)

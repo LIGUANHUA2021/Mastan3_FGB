@@ -26,6 +26,7 @@ from analysis.FESect.util import GaussianQuadrature as GQ
 from analysis.FESect.util import PrintLog as pl
 from analysis.FESect.element import Tri3
 from analysis.FESect.file.OutputResults import BPRes
+from analysis.FESect.variables.Model import Fiber
 
 
 def GetPerimeter(ID, OutlineType, Point1, Point2, Y, Z):
@@ -341,7 +342,7 @@ def GetShearCoefficient(Nodey, Nodez, NodePhi, NodePsi, FiberID, PointI, PointJ,
 
 
 def CalSectProps(RunAutoMesh, E_ref):
-    pl.Print(pl.BPLog.CalSectProp(pl.BPLog))
+    pl.Print(pl.BPLog.CalSectProp(Fiber))
     SP.Perimeter = GetPerimeter(Model.Outline.ID, Model.Outline.Type, Model.Outline.Point1, Model.Outline.Point2,
                                 Model.Point.Y, Model.Point.Z)
     if RunAutoMesh == 0:
