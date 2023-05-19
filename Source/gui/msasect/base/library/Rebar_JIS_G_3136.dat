@@ -1,0 +1,7 @@
+% BS_EN % All values are inches raised to the appropriate power.
+% Material, E, u, fy, eu
+SN400A 	 205000.0 	 0.3 	 235.0 	 0.2
+SN400B 	 205000.0 	 0.3 	 235.0 	 0.2
+SN400C 	 205000.0 	 0.3 	 235.0 	 0.2
+SN490B 	 205000.0 	 0.3 	 325.0 	 0.2
+SN490C 	 205000.0 	 0.3 	 325.0 	 0.2

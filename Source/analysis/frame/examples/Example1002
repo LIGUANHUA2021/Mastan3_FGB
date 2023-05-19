@@ -1,0 +1,37 @@
+{
+  "INFORMATION":
+  [
+    [ "Version", "3.0.0"],
+    [ "Date", "20220321"],
+    [ "Description", "This example is provided for testing linear analysis in MASTAN3.0.0"]
+  ],
+  "MATERIAL": [
+    [ 1, 210000000, 80770000, 0 , 0 ]
+  ],
+  "SECTION": [
+    [1, 1, 2, 0.004462, 3.394e-6, 6.171e-5, 1.264e-7, 2.799e-8, 0.08627, 0, 1e5, 1e5, 0, -0.2077, 0.0]
+  ],
+  "NODE": [
+    [ 1, 0, 0, 0 ],
+    [ 2, 3.0, 0, 0 ],
+    [ 3, 6.0, 0, 0 ]
+  ],
+  "MEMBER": [
+    [ 1, 1, 1, 2, 0 ],
+    [ 2, 1, 2, 3, 0 ]
+  ],
+  "RELEASE": [
+    [ 1, 1, 1 ],
+    [ 2, 1, 1 ]
+  ],
+  "BOUNDARY": [
+    [ 1, 1, 1, 1, 1, 1, 1 ]
+  ],
+  "JOINTLOAD": [
+    [ 3, 0, 0, 0, 10000, 0, 0, 0, 0 ]
+  ],
+  "ANALYSIS": [
+    [ "Type", "staticLinear" ],
+    [ "Target Load Factor", 500.0]
+  ]
+}

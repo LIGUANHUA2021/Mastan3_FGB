@@ -1,0 +1,9 @@
+% BS_EN % All values are inches raised to the appropriate power.
+% Material, E, u, fy, eu
+HPB300 	 210000.0 	 0.3 	 300.0 	 0.01
+HRB335 	 200000.0 	 0.3 	 335.0 	 0.01
+HRB400 	 200000.0 	 0.3 	 400.0 	 0.01
+RRB400 	 200000.0 	 0.3 	 400.0 	 0.01
+HRBF400 	 200000.0 	 0.3 	 400.0 	 0.01
+HRB500 	 200000.0 	 0.3 	 500.0 	 0.01
+HRBF500 	 200000.0 	 0.3 	 500.0 	 0.01

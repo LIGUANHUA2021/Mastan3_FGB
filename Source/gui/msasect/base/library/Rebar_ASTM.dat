@@ -1,0 +1,6 @@
+% BS_EN % All values are inches raised to the appropriate power.
+% Material, E, u, fy, eu
+Grade 40 	 200000.0 	 0.3 	 275.79 	 0.2
+Grade 50 	 200000.0 	 0.3 	 344.74 	 0.2
+Grade 60 	 200000.0 	 0.3 	 413.69 	 0.2
+Grade 75 	 200000.0 	 0.3 	 517.11 	 0.2

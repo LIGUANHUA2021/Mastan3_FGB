@@ -1,0 +1,8 @@
+% BS_EN % All values are inches raised to the appropriate power.
+% Material, E, u, fy, eu
+S235	205000	0.3	235	0.2
+S275	205000	0.3	275	0.2
+S355	205000	0.3	355	0.2
+S460	205000	0.3	460	0.2
+S550	205000	0.3	550	0.2
+S690	205000	0.3	690	0.2

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>194</width>
+    <height>245</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Spring Boundary</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>186</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Rz:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>10</y>
+     <width>59</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Node ID:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>156</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ry:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>96</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Uz:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>36</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ux:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>66</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Uy:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="NodeID">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>6</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="OKButton">
+   <property name="geometry">
+    <rect>
+     <x>98</x>
+     <y>216</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>126</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Rx:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Ux">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>36</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Uy">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>66</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Uz">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>96</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Rx">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>126</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Ry">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>156</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Rz">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>184</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>NodeID</tabstop>
+  <tabstop>comboBox_Ux</tabstop>
+  <tabstop>comboBox_Uy</tabstop>
+  <tabstop>comboBox_Uz</tabstop>
+  <tabstop>comboBox_Rx</tabstop>
+  <tabstop>comboBox_Ry</tabstop>
+  <tabstop>comboBox_Rz</tabstop>
+  <tabstop>OKButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

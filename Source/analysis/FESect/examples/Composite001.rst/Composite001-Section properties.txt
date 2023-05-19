@@ -1,0 +1,86 @@
+********************************************************************************
+~~~~~~~~~~Finite-Element Based Cross-Section Analysis Module (FESect)~~~~~~~~~~~
+********************************************************************************
+   
+Programme Name: FESect
+Authors: Authors
+Last Revised: RevisedDate
+Note: Finite-Element Based Cross-Section (FESect) Analysis Software    
+--------------------------------------------------------------------------------
+                                     Input                                      
+--------------------------------------------------------------------------------
+
+MATERIAL
+POINT
+OUTLINE
+GROUP
+LOADCASE
+FIBERSIZE
+
+NODENUMBER
+FIBERNUMBER
+
+--------------------------------------------------------------------------------
+                                    General                                     
+--------------------------------------------------------------------------------
+
+Cross-Section Area, A                                             4.00000000e+04
+Centroid, Y                                                       1.00000000e+02
+Centroid, Z                                                       1.00000000e+02
+Plastic Centroid, Yp                                              1.00000000e+02
+Plastic Centroid, Zp                                              1.00000000e+02
+Shear Centre WRT Centroid, Ys                                     6.78343207e-03
+Shear Centre WRT Centroid, Zs                                    -7.73362068e-04
+Torsional Constant, J                                             2.25706650e+08
+Warping Constant, Iω                                              8.59101962e+09
+Principle bending angle (rad)                                     4.02772366e-02
+Principle bending angle (deg)                                     2.30771567e+00
+
+--------------------------------------------------------------------------------
+                   Section Properties about User-Defined Axis                   
+--------------------------------------------------------------------------------
+
+Moment of Inertia, Iy                                             1.33333333e+08
+Moment of Inertia, Iz                                             1.33333333e+08
+Product of Inertia, Iyz                                           5.41331246e-09
+
+Elastic Section Modulus, Sy                                       1.33333333e+06
+Elastic Section Modulus, Sz                                       1.33333333e+06
+Plastic Section Modulus, Zy                                       2.00000000e+06
+Plastic Section Modulus, Zz                                       2.00000000e+06
+Radius of Gyration, ry                                            5.77350269e+01
+Radius of Gyration, rz                                            5.77350269e+01
+
+Wagner Coefficient, βy                                            1.54672414e-03
+Wagner Coefficient, βz                                           -1.35668641e-02
+Wagner Coefficient, βω                                            2.49798470e-03
+
+Shear Coefficient, ky                                             8.29529031e-01
+Shear Coefficient, kz                                             8.29730341e-01
+
+--------------------------------------------------------------------------------
+                    Section Properties about Principle Axis                     
+--------------------------------------------------------------------------------
+
+Principle moment of inertia, Iv                                   1.33333333e+08
+Principle moment of inertia, Iw                                   1.33333333e+08
+Principle product of inertia, Ivw                                -2.76486389e-09
+
+Principle elastic section modulus, Sv                             1.28272307e+06
+Principle elastic section modulus, Sw                             1.28272307e+06
+Principle plastic section modulus, Zv                             1.99945976e+06
+Principle plastic section modulus, Zw                             1.99945976e+06
+Radius of gyration, rv                                            5.77350269e+01
+Radius of gyration, rw                                            5.77350269e+01
+
+Wagner Coefficient, βv                                            9.99181649e-04
+Wagner Coefficient, βw                                           -1.36181421e-02
+Wagner Coefficient, βω                                            2.49798470e-03
+
+Shear Coefficient, kv                                             8.29528853e-01
+Shear Coefficient, kw                                             8.29730518e-01
+
+   
+********************************************************************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+********************************************************************************

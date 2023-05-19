@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="Icons">
+    <file>xy-view.png</file>
+    <file>xz-view.png</file>
+    <file>yz-view.png</file>
+    <file>xyz-axis.png</file>
+    <file>Fit-to-Screen.png</file>
+    <file>close-file.png</file>
+    <file>export-file.png</file>
+    <file>new-file.png</file>
+    <file>opon-file.png</file>
+    <file>save-as-file.png</file>
+    <file>save-file.png</file>
+    <file>add-file.png</file>
+  </qresource>
+</RCC>

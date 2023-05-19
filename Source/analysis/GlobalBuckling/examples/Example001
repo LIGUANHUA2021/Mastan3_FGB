@@ -1,0 +1,33 @@
+{
+  "INFORMATION":
+  [
+    [ "Version", "1.0.0"],
+    [ "Date", "20230321"],
+    [ "Description", "Example001: "]
+  ],
+  "REF_MATERIAL": [
+    [ 1, 205000, 0.3, 345 , 0.15 ]
+  ],
+  "SECPROPERTIES": [
+    [ "Cross-Sectional Area", 6.37904917e+04  ],
+    [ "Moment of Inertia of y", 4.95374674e+08  ],
+    [ "Moment of Inertia of z", 1.29707552e+10  ],
+    [ "Torsion Constant", 3.24264139e+07  ],
+    [ "Warping Constant", 1.41118879e+14  ],
+    [ "Shear Centre of y", 0.00000000e+00  ],
+    [ "Shear Centre of z", 0.00000000e+00  ],
+    [ "Wagner Coefficient of y", 0.00000000e+00  ],
+    [ "Wagner Coefficient of z", 0.00000000e+00  ]
+  ],
+    "ANALYSIS": [
+    [ "Flexural Buckling", 1  ],
+    [ "Flexural Buckling_Axis", "Minor"  ],
+    [ "Axial-torsional Buckling", 1 ],
+    [ "Lateral-torsional Buckling", 1 ],
+    [ "Lateral-torsional Buckling_Axis", "Minor" ],
+    [ "Twisting Effects", 1 ],
+    [ "SlenderRatio_min", 20 ],
+    [ "SlenderRatio_max", 200 ],
+    [ "SlenderRatio_steps", 50 ]
+  ]
+}

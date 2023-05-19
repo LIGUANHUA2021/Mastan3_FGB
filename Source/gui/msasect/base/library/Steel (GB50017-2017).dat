@@ -1,0 +1,8 @@
+% BS_EN % All values are inches raised to the appropriate power.
+% Material, E, u, fy, eu
+Q235	206000	0.3	235	0.01
+Q345	206000	0.3	345	0.01
+Q390	206000	0.3	390	0.01
+Q420	206000	0.3	420	0.01
+Q460	206000	0.3	460	0.01
+Q345GJ	206000	0.3	345	0.01

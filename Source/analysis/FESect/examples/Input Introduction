@@ -1,0 +1,34 @@
+{
+  "INFORMATION":[
+    [ "Version", ""],
+    [ "Date", ""],
+    [ "Description", ""]
+  ],
+  "MATERIAL": [
+    [ Material ID, E, G, nu, Fy, Density, Epscu, [ Stress, Strain ] (Enable Bilinear Model When Equals 0) ]
+  ],
+  "POINT": [
+    [ Point ID, Y, Z ]
+  ],
+  "OUTLINE": [
+    [ Outline ID, Group ID, Type, Point I, Point J ]
+  ],
+  "GROUP": [
+    [ Group ID, Material ID (The First Material ID as Default)]
+  ],
+  "LOADCASE": [
+    [ Case ID, P, My, Mz, Vy, Vz, T, Mb ]
+  ],
+  "ANALYSIS": [
+    [ "Fiber Size", Fiber Size (Enable AutoMesh When Equals 0) ],
+    [ "Element", Element Type ],
+    [ "Gauss Points", Gauss Points Number ],
+    [ "Basic Properties", Enable When Equals 1 ],
+    [ "Stress Analysis", Enable When Equals 1 ],
+    [ "Buckling Analysis", Enable When Equals 1 ],
+    [ "Dynamic Analysis", Enable When Equals 1 ],
+    [ "Heat Transfer", Enable When Equals 1 ],
+    [ "Yield Surface", Enable When Equals 1 ],
+    [ "Moment Curvature", Enable When Equals 1 ]
+  ]
+}

@@ -1,0 +1,8 @@
+% BS_EN % All values are inches raised to the appropriate power.
+% Material, E, u, fy, eu
+AS200	205000	0.3	200	0.2
+AS250	205000	0.3	250	0.2
+AS300	205000	0.3	300	0.2
+AS350	205000	0.3	350	0.2
+AS400	205000	0.3	400	0.2
+AS450	205000	0.3	450	0.2

@@ -1,0 +1,27 @@
+{
+  "INFORMATION":
+  [
+    [ "Version", "0.0.1"],
+    [ "Date", "20230501"],
+    [ "Description", "This example is provided for testing linear analysis of solid element"]
+  ],
+  "MATERIAL": [
+    [ ID, E, G, PR , Fy, Dens ]
+  ],
+  "NODE": [
+    [ ID, X, Y, Z ]
+  ],
+  "ELEMENT": [
+    [ ID , MatID, NodeID_I, NodeID_J, NodeID_K, NodeID_N]
+  ],
+  "BOUNDARY": [
+    [ NodeID, UX, UY, UZ ]
+  ],
+  "POINTLOAD": [
+    [ NodeID, FX, FY, FZ ]
+  ],
+  "ANALYSIS": [
+    [ "Type", "staticLinear" ],
+    [ "Target Load Factor", 1.0]
+  ]
+}
