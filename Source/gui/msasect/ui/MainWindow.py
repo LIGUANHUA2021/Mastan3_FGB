@@ -139,6 +139,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.status.addPermanentWidget(self.statusinfo, stretch=0)
         self.status.addPermanentWidget(self.statusinfo_1, stretch=0)
         #
+        self.FGCircle_toolButton.setEnabled(False)
+        self.FGRec_toolButton.setEnabled(False)
+        self.FGI_toolButton.setEnabled(False)
+        self.FGCircle_toolButton.hide()
+        self.FGRec_toolButton.hide()
+        self.FGI_toolButton.hide()
+        self.label_7.hide()
+        #
         self.DateInput_lineEdit.setText(str(datetime.date.today()))
         # self.PreparedbyInput_lineEdit.setText(str(socket.gethostname()))
         #
@@ -297,7 +305,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         OrigLeg = self.graphicsView.addViewBox(row=2, col=0, rowspan=1, enableMouse=False, enableMenu=False,
                                                defaultPadding=0)
         OrigLeg.autoRange()
-        OrigLeg.addItem(pg.TargetItem(pos=(0.1, 0.5), size=5, symbol='o', pen=pg.mkPen('w'), brush=pg.mkColor('w'),
+        OrigLeg.addItem(pg.TargetItem(pos=(0.1, 0.5), size=5, symbol='o', pen=pg.mkPen('b'), brush=pg.mkColor('b'),
                                       movable=False, label="ORIGIN", labelOpts={"offset": (5, -0.5)}))
         MIDLeg = self.graphicsView.addViewBox(row=3, col=0, rowspan=1, enableMouse=False, enableMenu=False,
                                               defaultPadding=0)

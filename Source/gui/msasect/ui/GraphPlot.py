@@ -168,7 +168,7 @@ def OutlinePlot(ViewBox):
 def OriginPlot(ViewBox):
     OrigPlot = pg.GraphItem()
     ViewBox.addItem(OrigPlot)
-    OrigPlot.setData(pos=np.zeros((1, 2)), size=5, symbol='o', symbolPen=pg.mkPen('w'), brush=pg.mkColor('w'),
+    OrigPlot.setData(pos=np.zeros((1, 2)), size=5, symbol='o', symbolPen=pg.mkPen('b'), brush=pg.mkColor('b'),
                      pxMode=True)
     return
 

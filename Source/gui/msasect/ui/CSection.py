@@ -33,6 +33,8 @@ class CSection_Dialog(QDialog, Ui_CSection_Dialog):
         """
         super().__init__(parent)
         self.setupUi(self)
+        self.Centerline_radioButton.setEnabled(False)
+        self.Outline_radioButton.setChecked(True)
         self.setWindowIcon(QIcon('ui/ico/TemplateIcon/C-Section.ico'))
         self.color = '#aaffff'
         self.ColorButton.clicked.connect(self.ShowColorDialog)

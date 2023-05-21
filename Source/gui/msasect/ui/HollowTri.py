@@ -57,6 +57,8 @@ class HollowTri_Dialog(QDialog, Ui_HollowTri_Dialog):
         # else:
         #     maxId = max(MatIdDict.keys(), key=(lambda x:x))
         AddId =  1
+        self.Centerline_radioButton.setEnabled(False)
+        self.Outline_radioButton.setChecked(True)
         self.ID_inputlineEdit.setText(str(int(AddId)))
         self.E_inputlineEdit.setText(str(205000))
         self.fy_inputlineEdit.setText(str(345))

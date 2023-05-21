@@ -59,6 +59,8 @@ class HollowCircle_Dialog(QDialog, Ui_HollowCircle_Dialog):
             maxId = max(MatIdDict.keys(), key=(lambda x:x))
             AddId = maxId + 1
         self.ID_inputlineEdit.setText(str(int(AddId)))
+        self.Centerline_radioButton.setEnabled(False)
+        self.Outline_radioButton.setChecked(True)
         self.ID_inputlineEdit.setText(str(int(AddId)))
         self.E_inputlineEdit.setText(str(205000))
         self.fy_inputlineEdit.setText(str(345))

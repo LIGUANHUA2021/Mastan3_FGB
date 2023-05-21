@@ -83,6 +83,8 @@ class ISection_Dialog(QDialog, Ui_ISection_Dialog):
         #     maxId = max(MatIdDict.keys(), key=(lambda x:x))
         #     AddId = maxId + 1
         AddId = 1
+        self.Centerline_radioButton.setEnabled(False)
+        self.Outline_radioButton.setChecked(True)
         self.ID_inputlineEdit.setText(str(int(AddId)))
         self.E_inputlineEdit.setText(str(205000))
         self.fy_inputlineEdit.setText(str(345))

@@ -60,6 +60,8 @@ class ZSection_Dialog(QDialog, Ui_ZSection_Dialog):
         #     maxId = max(MatIdDict.keys(), key=(lambda x: x))
         #     AddId = maxId + 1
         AddId = 1
+        self.Centerline_radioButton.setEnabled(False)
+        self.Outline_radioButton.setChecked(True)
         self.ID_inputlineEdit.setText(str(int(AddId)))
         self.ID_inputlineEdit.setText(str(int(AddId)))
         self.E_inputlineEdit.setText(str(205000))

@@ -63,6 +63,8 @@ class HollowPoly_Dialog(QDialog, Ui_HollowPoly_Dialog):
         self.fy_inputlineEdit.setText(str(345))
         self.eu_inputlineEdit.setText(str(0.15))
         self.G_inputlineEdit.setText(str(0.3))
+        self.Centerline_radioButton.setEnabled(False)
+        self.Outline_radioButton.setChecked(True)
         # 设置validator
         doubleValidator = QDoubleValidator(bottom=-999,top=999)
         intValidator = QIntValidator()

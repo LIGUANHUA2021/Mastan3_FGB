@@ -67,6 +67,8 @@ class HollowRec_Dialog(QDialog, Ui_HollowRec_Dialog):
             AddId = maxId + 1
         self.ID_inputlineEdit.setText(str(int(AddId)))
         self.ID_inputlineEdit.setText(str(int(AddId)))
+        self.Centerline_radioButton.setEnabled(False)
+        self.Outline_radioButton.setChecked(True)
         self.E_inputlineEdit.setText(str(205000))
         self.fy_inputlineEdit.setText(str(345))
         self.eu_inputlineEdit.setText(str(0.15))
