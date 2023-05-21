@@ -626,7 +626,7 @@ class msaFEModel:
             msaFEModel.Mat.eu[tID] = teu
             msaFEModel.Mat.Type[tID] = tType
 
-        def Modify(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: float):
+        def Modify_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: float):
             if msaFEModel.CheckID(GID, msaFEModel.Mat.ID) == 0:
                 print('Warning! Please input the correct material ID.')
                 return
