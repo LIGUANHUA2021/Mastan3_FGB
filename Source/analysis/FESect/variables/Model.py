@@ -35,6 +35,15 @@ class Material:
     Density = {}
     eu = {}
     ##
+    Gra = 0
+    Gra_ID = {}
+    E_ref = {}
+    E_begin = {}
+    E_end = {}
+    Gra_ang = {}
+    Gra_law = {}
+    GColor = {}
+
     MaxTenStrn = {}  ## Maximum tension strain
     MaxComStrn = {}  ## Maximum Compressive strain
     MatProperty = {}  ## 1 for simple  properties; 2 for advanced properties
@@ -55,6 +64,14 @@ class Material:
         Material.MaxComStrn = {}
         Material.MatProperty = {}
         Material.Type = {}
+        Material.Gra = 0
+        Material.Gra_ID = {}
+        Material.E_ref = {}
+        Material.E_begin = {}
+        Material.E_end = {}
+        Material.Gra_ang = {}
+        Material.Gra_law = {}
+        Material.GColor = {}
         return
 
     def readMat(MatInfo):
@@ -66,10 +83,20 @@ class Material:
         Material.Fy = MatInfo.Fy
         Material.Density = MatInfo.Density
         Material.eu = MatInfo.eu
+        Material.Gra = MatInfo.Gra
+        Material.Gra_ID = MatInfo.Gra_ID
+        Material.E_ref = MatInfo.E_ref
+        Material.E_begin = MatInfo.E_begin
+        Material.E_end = MatInfo.E_end
+        Material.Gra_ang = MatInfo.Gra_ang
+        Material.Gra_law = MatInfo.Gra_law
+        Material.GColor = MatInfo.GColor
+
         Material.MaxComStrn = {key: value for key, value in MatInfo.eu.items()}
         Material.MaxTenStrn = {key: -value for key, value in MatInfo.eu.items()}
         Material.Type = {key: "S" for key in MatInfo.ID}
         Material.MatProperty = {key: 1 for key in MatInfo.ID}
+
         return
 
 
@@ -298,6 +325,7 @@ class Segment:
 class Fiber:
     Count = 0
     MaterialID = {}
+    Material_AVE = {}
     ID = {}
     GroupID = {}
     PointI = {}
@@ -345,6 +373,7 @@ class Fiber:
         Fiber.ID = {}
         Fiber.GroupID = {}
         Fiber.MaterialID = {}
+        Fiber.Material_AVE = {}
         Fiber.PointI = {}
         Fiber.PointJ = {}
         Fiber.PointK = {}
@@ -375,7 +404,7 @@ class Fiber:
         Fiber.PointI = dict(enumerate(FiberInfo[:, 2]))
         Fiber.PointJ = dict(enumerate(FiberInfo[:, 1]))
         Fiber.PointK = dict(enumerate(FiberInfo[:, 0]))
-
+        Fiber.Material_AVE = np.zeros(Fiber.Count)
         tArea = np.zeros(Fiber.Count)
         tSeq = list(range(Fiber.Count))
         tcy = np.zeros(Fiber.Count)
