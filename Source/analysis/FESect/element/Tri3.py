@@ -356,7 +356,7 @@ def getFibergrade(x, y ,Fiber_E, Y, Z):
     f = alpha * f1 + beta * f2 + gamma * f3
     return f
 
-def getAVE_E(f, Fiber_E, Y, Z):
+def getInter_E(f, Fiber_E, Y, Z):
     x1 = Y[0], y1 = Z[0], f1 = Fiber_E[0]
     x2 = Y[1], y2 = Z[1], f2 = Fiber_E[1]
     x3 = Y[2], y3 = Z[2], f3 = Fiber_E[2]
