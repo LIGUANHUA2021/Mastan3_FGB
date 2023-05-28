@@ -4,360 +4,59 @@
 ********************************************************************************
 
 Calculating Section Properties...
+	NUM. OF Fibers.... = 620
 Calculating Torsion Properties...
-Solving Warping Functions 2116 ¡Á 2116...
+Solving Warping Functions 344 ¡Á 344...
 Calculating Shear Properties...
-Solving Shear Functions 2116 ¡Á 2116...
-Solving Principle Shear Functions 2116 ¡Á 2116...
+Solving Shear Functions 344 ¡Á 344...
+Solving Principle Shear Functions 344 ¡Á 344...
 
 ********************************************************************************
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BASIC PROPERTIES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ********************************************************************************
 
 * GENERAL
-	Cross-Section Area, A......................................... = 6.37904917e+04
-	Centroid, Y................................................... = -5.58800000e+02
-	Centroid, Z................................................... = 2.01930000e+02
-	Plastic Centroid, Yp.......................................... = -5.58800000e+02
-	Plastic Centroid, Zp.......................................... = 2.01930000e+02
-	Shear Centre WRT Centroid, Ys................................. = 2.53875418e-06
-	Shear Centre WRT Centroid, Zs................................. = 1.32924500e-05
-	Torsional Constant, J......................................... = 3.24730906e+07
-	Warping Constant, Iomg........................................ = 1.41117959e+14
-	Principle bending angle (rad)................................. = 1.84373710e-16
-	Principle bending angle (deg)................................. = 1.05638354e-14
+	Cross-Section Area, A......................................... = 1.17138926e+05
+	Centroid, Y................................................... = -3.02122331e+02
+	Centroid, Z................................................... = 5.62383179e+02
+	Plastic Centroid, Yp.......................................... = -3.29580089e+02
+	Plastic Centroid, Zp.......................................... = 6.19888298e+02
+	Shear Centre WRT Centroid, Ys................................. = 5.11652990e+01
+	Shear Centre WRT Centroid, Zs................................. = -1.02546211e+02
+	Torsional Constant, J......................................... = 2.04708893e+10
+	Warping Constant, Iomg........................................ = 2.08625612e+13
+	Principle bending angle (rad)................................. = 1.38040748e+00
+	Principle bending angle (deg)................................. = 7.90915228e+01
 
 * SECTION PROPERTIES ABOUT USER-DEFINED AXIS
-	Moment of Inertia, Iy......................................... = 4.95374674e+08
-	Moment of Inertia, Iz......................................... = 1.29707552e+10
-	Product of Inertia, Iyz....................................... = -2.30013219e-06
+	Moment of Inertia, Iy......................................... = 4.94725928e+09
+	Moment of Inertia, Iz......................................... = 2.31396234e+09
+	Product of Inertia, Iyz....................................... = -5.27073808e+08
 	Elastic Section Modulus, Sy................................... = 0.00000000e+00
 	Elastic Section Modulus, Sz................................... = 0.00000000e+00
 	Plastic Section Modulus, Zy................................... = 0.00000000e+00
 	Plastic Section Modulus, Zz................................... = 0.00000000e+00
-	Plastic Tortional Modulus, Zt................................. = 4.07724508e+07
-	Radius of Gyration, ry........................................ = 8.81229292e+01
-	Radius of Gyration, rz........................................ = 4.50925356e+02
-	Wagner Coefficient, Betay..................................... = -2.65848926e-05
-	Wagner Coefficient, Betaz..................................... = -5.07750626e-06
-	Wagner Coefficient, Betaomg................................... = -7.08378938e-06
-	Shear Coefficient, ky......................................... = 4.39731774e-01
-	Shear Coefficient, kz......................................... = 4.93326242e-01
+	Plastic Tortional Modulus, Zt................................. = 2.02131401e+08
+	Radius of Gyration, ry........................................ = 2.05509412e+02
+	Radius of Gyration, rz........................................ = 1.40548924e+02
+	Wagner Coefficient, Betay..................................... = -3.25702904e+01
+	Wagner Coefficient, Betaz..................................... = 8.02972890e+01
+	Wagner Coefficient, Betaomg................................... = 1.01196940e+00
+	Shear Coefficient, ky......................................... = 1.21149303e-01
+	Shear Coefficient, kz......................................... = 7.00124707e-02
 
 * SECTION PROPERTIES ABOUT PRINCIPAL AXIS
-	Principle moment of inertia, Iv............................... = 4.95374674e+08
-	Principle moment of inertia, Iw............................... = 1.29707552e+10
+	Principle moment of inertia, Iv............................... = 2.21238305e+09
+	Principle moment of inertia, Iw............................... = 5.04883858e+09
 	Principle elastic section modulus, Sv......................... = 0.00000000e+00
 	Principle elastic section modulus, Sw......................... = 0.00000000e+00
 	Principle plastic section modulus, Zv......................... = 0.00000000e+00
 	Principle plastic section modulus, Zw......................... = 0.00000000e+00
-	Radius of gyration, rv........................................ = 8.81229292e+01
-	Radius of gyration, rw........................................ = 4.50925356e+02
-	Wagner Coefficient, Betav..................................... = -2.65848926e-05
-	Wagner Coefficient, Betaw..................................... = -5.07750627e-06
-	Wagner Coefficient, Betaomg................................... = -7.08378938e-06
-	Shear Coefficient, kv......................................... = 4.39731774e-01
-	Shear Coefficient, kw......................................... = 4.93326242e-01
-
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SOLUTION START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-Calculating Section Properties...
-Calculating Torsion Properties...
-Solving Warping Functions 2116 ¡Á 2116...
-Calculating Shear Properties...
-Solving Shear Functions 2116 ¡Á 2116...
-Solving Principle Shear Functions 2116 ¡Á 2116...
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BASIC PROPERTIES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-* GENERAL
-	Cross-Section Area, A......................................... = 6.37904917e+04
-	Centroid, Y................................................... = -5.58800000e+02
-	Centroid, Z................................................... = 2.01930000e+02
-	Plastic Centroid, Yp.......................................... = -5.58800000e+02
-	Plastic Centroid, Zp.......................................... = 2.01930000e+02
-	Shear Centre WRT Centroid, Ys................................. = 2.53875418e-06
-	Shear Centre WRT Centroid, Zs................................. = 1.32924500e-05
-	Torsional Constant, J......................................... = 3.24730906e+07
-	Warping Constant, Iomg........................................ = 1.41117959e+14
-	Principle bending angle (rad)................................. = 1.84373710e-16
-	Principle bending angle (deg)................................. = 1.05638354e-14
-
-* SECTION PROPERTIES ABOUT USER-DEFINED AXIS
-	Moment of Inertia, Iy......................................... = 4.95374674e+08
-	Moment of Inertia, Iz......................................... = 1.29707552e+10
-	Product of Inertia, Iyz....................................... = -2.30013219e-06
-	Elastic Section Modulus, Sy................................... = 0.00000000e+00
-	Elastic Section Modulus, Sz................................... = 0.00000000e+00
-	Plastic Section Modulus, Zy................................... = 0.00000000e+00
-	Plastic Section Modulus, Zz................................... = 0.00000000e+00
-	Plastic Tortional Modulus, Zt................................. = 4.07724508e+07
-	Radius of Gyration, ry........................................ = 8.81229292e+01
-	Radius of Gyration, rz........................................ = 4.50925356e+02
-	Wagner Coefficient, Betay..................................... = -2.65848926e-05
-	Wagner Coefficient, Betaz..................................... = -5.07750626e-06
-	Wagner Coefficient, Betaomg................................... = -7.08378938e-06
-	Shear Coefficient, ky......................................... = 4.39731774e-01
-	Shear Coefficient, kz......................................... = 4.93326242e-01
-
-* SECTION PROPERTIES ABOUT PRINCIPAL AXIS
-	Principle moment of inertia, Iv............................... = 4.95374674e+08
-	Principle moment of inertia, Iw............................... = 1.29707552e+10
-	Principle elastic section modulus, Sv......................... = 0.00000000e+00
-	Principle elastic section modulus, Sw......................... = 0.00000000e+00
-	Principle plastic section modulus, Zv......................... = 0.00000000e+00
-	Principle plastic section modulus, Zw......................... = 0.00000000e+00
-	Radius of gyration, rv........................................ = 8.81229292e+01
-	Radius of gyration, rw........................................ = 4.50925356e+02
-	Wagner Coefficient, Betav..................................... = -2.65848926e-05
-	Wagner Coefficient, Betaw..................................... = -5.07750627e-06
-	Wagner Coefficient, Betaomg................................... = -7.08378938e-06
-	Shear Coefficient, kv......................................... = 4.39731774e-01
-	Shear Coefficient, kw......................................... = 4.93326242e-01
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SOLUTION START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-Calculating Section Properties...
-Calculating Torsion Properties...
-Solving Warping Functions 594 ¡Á 594...
-Calculating Shear Properties...
-Solving Shear Functions 594 ¡Á 594...
-Solving Principle Shear Functions 594 ¡Á 594...
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BASIC PROPERTIES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-* GENERAL
-	Cross-Section Area, A......................................... = 2.22224331e+05
-	Centroid, Y................................................... = 2.98645652e+02
-	Centroid, Z................................................... = 1.50000000e+02
-	Plastic Centroid, Yp.......................................... = 3.26549129e+02
-	Plastic Centroid, Zp.......................................... = 1.50000000e+02
-	Shear Centre WRT Centroid, Ys................................. = -2.65028178e+01
-	Shear Centre WRT Centroid, Zs................................. = 8.82256659e-13
-	Torsional Constant, J......................................... = 4.29635466e+09
-	Warping Constant, Iomg........................................ = 7.82603132e+12
-	Principle bending angle (rad)................................. = -5.46331004e-16
-	Principle bending angle (deg)................................. = -3.13024607e-14
-
-* SECTION PROPERTIES ABOUT USER-DEFINED AXIS
-	Moment of Inertia, Iy......................................... = 1.66668249e+09
-	Moment of Inertia, Iz......................................... = 4.69894425e+09
-	Product of Inertia, Iyz....................................... = 1.65661862e-06
-	Elastic Section Modulus, Sy................................... = 0.00000000e+00
-	Elastic Section Modulus, Sz................................... = 0.00000000e+00
-	Plastic Section Modulus, Zy................................... = 0.00000000e+00
-	Plastic Section Modulus, Zz................................... = 0.00000000e+00
-	Plastic Tortional Modulus, Zt................................. = 4.67771896e+07
-	Radius of Gyration, ry........................................ = 8.66025404e+01
-	Radius of Gyration, rz........................................ = 1.45413371e+02
-	Wagner Coefficient, Betay..................................... = -5.84381504e-13
-	Wagner Coefficient, Betaz..................................... = -9.59486063e+00
-	Wagner Coefficient, Betaomg................................... = -1.66367839e-12
-	Shear Coefficient, ky......................................... = 2.00768723e-03
-	Shear Coefficient, kz......................................... = 1.18759825e+00
-
-* SECTION PROPERTIES ABOUT PRINCIPAL AXIS
-	Principle moment of inertia, Iv............................... = 1.66668249e+09
-	Principle moment of inertia, Iw............................... = 4.69894425e+09
-	Principle elastic section modulus, Sv......................... = 0.00000000e+00
-	Principle elastic section modulus, Sw......................... = 0.00000000e+00
-	Principle plastic section modulus, Zv......................... = 0.00000000e+00
-	Principle plastic section modulus, Zw......................... = 0.00000000e+00
-	Radius of gyration, rv........................................ = 8.66025404e+01
-	Radius of gyration, rw........................................ = 1.45413371e+02
-	Wagner Coefficient, Betav..................................... = -5.12629830e-13
-	Wagner Coefficient, Betaw..................................... = -9.59486063e+00
-	Wagner Coefficient, Betaomg................................... = -1.66367839e-12
-	Shear Coefficient, kv......................................... = 3.25984725e-01
-	Shear Coefficient, kw......................................... = 1.18759825e+00
-
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SOLUTION START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-Calculating Section Properties...
-Calculating Torsion Properties...
-Solving Warping Functions 2116 ¡Á 2116...
-Calculating Shear Properties...
-Solving Shear Functions 2116 ¡Á 2116...
-Solving Principle Shear Functions 2116 ¡Á 2116...
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BASIC PROPERTIES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-* GENERAL
-	Cross-Section Area, A......................................... = 6.37904917e+04
-	Centroid, Y................................................... = -5.58800000e+02
-	Centroid, Z................................................... = 2.01930000e+02
-	Plastic Centroid, Yp.......................................... = -5.58800000e+02
-	Plastic Centroid, Zp.......................................... = 2.01930000e+02
-	Shear Centre WRT Centroid, Ys................................. = 2.53875418e-06
-	Shear Centre WRT Centroid, Zs................................. = 1.32924500e-05
-	Torsional Constant, J......................................... = 3.24730906e+07
-	Warping Constant, Iomg........................................ = 1.41117959e+14
-	Principle bending angle (rad)................................. = 1.84373710e-16
-	Principle bending angle (deg)................................. = 1.05638354e-14
-
-* SECTION PROPERTIES ABOUT USER-DEFINED AXIS
-	Moment of Inertia, Iy......................................... = 4.95374674e+08
-	Moment of Inertia, Iz......................................... = 1.29707552e+10
-	Product of Inertia, Iyz....................................... = -2.30013219e-06
-	Elastic Section Modulus, Sy................................... = 0.00000000e+00
-	Elastic Section Modulus, Sz................................... = 0.00000000e+00
-	Plastic Section Modulus, Zy................................... = 0.00000000e+00
-	Plastic Section Modulus, Zz................................... = 0.00000000e+00
-	Plastic Tortional Modulus, Zt................................. = 4.07724508e+07
-	Radius of Gyration, ry........................................ = 8.81229292e+01
-	Radius of Gyration, rz........................................ = 4.50925356e+02
-	Wagner Coefficient, Betay..................................... = -2.65848926e-05
-	Wagner Coefficient, Betaz..................................... = -5.07750626e-06
-	Wagner Coefficient, Betaomg................................... = -7.08378938e-06
-	Shear Coefficient, ky......................................... = 4.39731774e-01
-	Shear Coefficient, kz......................................... = 4.93326242e-01
-
-* SECTION PROPERTIES ABOUT PRINCIPAL AXIS
-	Principle moment of inertia, Iv............................... = 4.95374674e+08
-	Principle moment of inertia, Iw............................... = 1.29707552e+10
-	Principle elastic section modulus, Sv......................... = 0.00000000e+00
-	Principle elastic section modulus, Sw......................... = 0.00000000e+00
-	Principle plastic section modulus, Zv......................... = 0.00000000e+00
-	Principle plastic section modulus, Zw......................... = 0.00000000e+00
-	Radius of gyration, rv........................................ = 8.81229292e+01
-	Radius of gyration, rw........................................ = 4.50925356e+02
-	Wagner Coefficient, Betav..................................... = -2.65848926e-05
-	Wagner Coefficient, Betaw..................................... = -5.07750627e-06
-	Wagner Coefficient, Betaomg................................... = -7.08378938e-06
-	Shear Coefficient, kv......................................... = 4.39731774e-01
-	Shear Coefficient, kw......................................... = 4.93326242e-01
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SOLUTION START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-Calculating Section Properties...
-Calculating Torsion Properties...
-Solving Warping Functions 594 ¡Á 594...
-Calculating Shear Properties...
-Solving Shear Functions 594 ¡Á 594...
-Solving Principle Shear Functions 594 ¡Á 594...
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BASIC PROPERTIES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-* GENERAL
-	Cross-Section Area, A......................................... = 2.22224331e+05
-	Centroid, Y................................................... = 2.98645652e+02
-	Centroid, Z................................................... = 1.50000000e+02
-	Plastic Centroid, Yp.......................................... = 3.26549129e+02
-	Plastic Centroid, Zp.......................................... = 1.50000000e+02
-	Shear Centre WRT Centroid, Ys................................. = -2.65028178e+01
-	Shear Centre WRT Centroid, Zs................................. = 8.82256659e-13
-	Torsional Constant, J......................................... = 4.29635466e+09
-	Warping Constant, Iomg........................................ = 7.82603132e+12
-	Principle bending angle (rad)................................. = -5.46331004e-16
-	Principle bending angle (deg)................................. = -3.13024607e-14
-
-* SECTION PROPERTIES ABOUT USER-DEFINED AXIS
-	Moment of Inertia, Iy......................................... = 1.66668249e+09
-	Moment of Inertia, Iz......................................... = 4.69894425e+09
-	Product of Inertia, Iyz....................................... = 1.65661862e-06
-	Elastic Section Modulus, Sy................................... = 0.00000000e+00
-	Elastic Section Modulus, Sz................................... = 0.00000000e+00
-	Plastic Section Modulus, Zy................................... = 0.00000000e+00
-	Plastic Section Modulus, Zz................................... = 0.00000000e+00
-	Plastic Tortional Modulus, Zt................................. = 4.67771896e+07
-	Radius of Gyration, ry........................................ = 8.66025404e+01
-	Radius of Gyration, rz........................................ = 1.45413371e+02
-	Wagner Coefficient, Betay..................................... = -5.84381504e-13
-	Wagner Coefficient, Betaz..................................... = -9.59486063e+00
-	Wagner Coefficient, Betaomg................................... = -1.66367839e-12
-	Shear Coefficient, ky......................................... = 2.00768723e-03
-	Shear Coefficient, kz......................................... = 1.18759825e+00
-
-* SECTION PROPERTIES ABOUT PRINCIPAL AXIS
-	Principle moment of inertia, Iv............................... = 1.66668249e+09
-	Principle moment of inertia, Iw............................... = 4.69894425e+09
-	Principle elastic section modulus, Sv......................... = 0.00000000e+00
-	Principle elastic section modulus, Sw......................... = 0.00000000e+00
-	Principle plastic section modulus, Zv......................... = 0.00000000e+00
-	Principle plastic section modulus, Zw......................... = 0.00000000e+00
-	Radius of gyration, rv........................................ = 8.66025404e+01
-	Radius of gyration, rw........................................ = 1.45413371e+02
-	Wagner Coefficient, Betav..................................... = -5.12629830e-13
-	Wagner Coefficient, Betaw..................................... = -9.59486063e+00
-	Wagner Coefficient, Betaomg................................... = -1.66367839e-12
-	Shear Coefficient, kv......................................... = 3.25984725e-01
-	Shear Coefficient, kw......................................... = 1.18759825e+00
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SOLUTION START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-Calculating Section Properties...
-Calculating Torsion Properties...
-Solving Warping Functions 594 ¡Á 594...
-Calculating Shear Properties...
-Solving Shear Functions 594 ¡Á 594...
-Solving Principle Shear Functions 594 ¡Á 594...
-
-********************************************************************************
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BASIC PROPERTIES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-********************************************************************************
-
-* GENERAL
-	Cross-Section Area, A......................................... = 2.22224331e+05
-	Centroid, Y................................................... = 2.98645652e+02
-	Centroid, Z................................................... = 1.50000000e+02
-	Plastic Centroid, Yp.......................................... = 3.26549129e+02
-	Plastic Centroid, Zp.......................................... = 1.50000000e+02
-	Shear Centre WRT Centroid, Ys................................. = -2.65028178e+01
-	Shear Centre WRT Centroid, Zs................................. = 8.82256659e-13
-	Torsional Constant, J......................................... = 4.29635466e+09
-	Warping Constant, Iomg........................................ = 7.82603132e+12
-	Principle bending angle (rad)................................. = -5.46331004e-16
-	Principle bending angle (deg)................................. = -3.13024607e-14
-
-* SECTION PROPERTIES ABOUT USER-DEFINED AXIS
-	Moment of Inertia, Iy......................................... = 1.66668249e+09
-	Moment of Inertia, Iz......................................... = 4.69894425e+09
-	Product of Inertia, Iyz....................................... = 1.65661862e-06
-	Elastic Section Modulus, Sy................................... = 8.19475040e+07
-	Elastic Section Modulus, Sz................................... = 1.35068647e+08
-	Plastic Section Modulus, Zy................................... = 2.24556213e+08
-	Plastic Section Modulus, Zz................................... = 3.74910734e+08
-	Plastic Tortional Modulus, Zt................................. = 4.67771896e+07
-	Radius of Gyration, ry........................................ = 8.66025404e+01
-	Radius of Gyration, rz........................................ = 1.45413371e+02
-	Wagner Coefficient, Betay..................................... = -5.84381504e-13
-	Wagner Coefficient, Betaz..................................... = -9.59486063e+00
-	Wagner Coefficient, Betaomg................................... = -1.66367839e-12
-	Shear Coefficient, ky......................................... = 2.00768723e-03
-	Shear Coefficient, kz......................................... = 1.18759825e+00
-
-* SECTION PROPERTIES ABOUT PRINCIPAL AXIS
-	Principle moment of inertia, Iv............................... = 1.66668249e+09
-	Principle moment of inertia, Iw............................... = 4.69894425e+09
-	Principle elastic section modulus, Sv......................... = 8.19475040e+07
-	Principle elastic section modulus, Sw......................... = 1.35068647e+08
-	Principle plastic section modulus, Zv......................... = 2.24556213e+08
-	Principle plastic section modulus, Zw......................... = 3.74910734e+08
-	Radius of gyration, rv........................................ = 8.66025404e+01
-	Radius of gyration, rw........................................ = 1.45413371e+02
-	Wagner Coefficient, Betav..................................... = -5.12629830e-13
-	Wagner Coefficient, Betaw..................................... = -9.59486063e+00
-	Wagner Coefficient, Betaomg................................... = -1.66367839e-12
-	Shear Coefficient, kv......................................... = 3.25984725e-01
-	Shear Coefficient, kw......................................... = 1.18759825e+00
+	Radius of gyration, rv........................................ = 1.37429366e+02
+	Radius of gyration, rw........................................ = 2.07608497e+02
+	Wagner Coefficient, Betav..................................... = 2.53191957e+01
+	Wagner Coefficient, Betaw..................................... = 2.37611193e+01
+	Wagner Coefficient, Betaomg................................... = 1.01196940e+00
+	Shear Coefficient, kv......................................... = 7.82587037e-03
+	Shear Coefficient, kw......................................... = 7.74805786e-02
 
