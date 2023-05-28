@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>335</width>
-    <height>225</height>
+    <height>413</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -25,7 +25,7 @@
   <property name="maximumSize">
    <size>
     <width>335</width>
-    <height>225</height>
+    <height>2250</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -373,6 +373,115 @@
 }
 </string>
           </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>E_begin:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Gra_ang:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="Gra_law_label">
+          <property name="text">
+           <string>Gra_law:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>k:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="E_begin_lineEdit">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 10pt &quot;Times New Roman&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="E_end_lineEdit">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 10pt &quot;Times New Roman&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QLineEdit" name="Gra_ang_lineEdit">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 10pt &quot;Times New Roman&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QLineEdit" name="lineEdit_5">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 10pt &quot;Times New Roman&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>E_end:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <widget class="QComboBox" name="comboBox">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 9pt &quot;Segoe UI&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Power law</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Exponential law</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Sigmoid law</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>

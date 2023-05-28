@@ -36,13 +36,14 @@ class Material:
     eu = {}
     ##
     Gra = 0
-    Gra_ID = {}
-    E_ref = {}
-    E_begin = {}
-    E_end = {}
-    Gra_ang = {}
-    Gra_law = {}
-    GColor = {}
+    Gra_ID = 0
+    E_ref = 0
+    E_begin = 0
+    E_end = 0
+    Gra_ang = 0
+    Gra_law = 0
+    GColor = 0
+    k = 0
 
     MaxTenStrn = {}  ## Maximum tension strain
     MaxComStrn = {}  ## Maximum Compressive strain
@@ -65,13 +66,14 @@ class Material:
         Material.MatProperty = {}
         Material.Type = {}
         Material.Gra = 0
-        Material.Gra_ID = {}
-        Material.E_ref = {}
-        Material.E_begin = {}
-        Material.E_end = {}
-        Material.Gra_ang = {}
-        Material.Gra_law = {}
-        Material.GColor = {}
+        Material.Gra_ID = 0
+        Material.E_ref = 0
+        Material.E_begin = 0
+        Material.E_end = 0
+        Material.Gra_ang = 0
+        Material.Gra_law = 0
+        Material.GColor = 0
+        Material.k = 0
         return
 
     def readMat(MatInfo):
@@ -91,6 +93,7 @@ class Material:
         Material.Gra_ang = MatInfo.Gra_ang
         Material.Gra_law = MatInfo.Gra_law
         Material.GColor = MatInfo.GColor
+        Material.k = MatInfo.k
 
         Material.MaxComStrn = {key: value for key, value in MatInfo.eu.items()}
         Material.MaxTenStrn = {key: -value for key, value in MatInfo.eu.items()}
@@ -232,6 +235,7 @@ class Node:
     z = {}
     V = {}
     W = {}
+    Node_E = {}
     Omega = {}
 
     @classmethod
@@ -244,6 +248,7 @@ class Node:
         Node.z = {}
         Node.V = {}
         Node.W = {}
+        Node.Node_E = {}
         Node.Omega = {}
         return
 
@@ -295,6 +300,52 @@ class Node:
         Node.Phip = dict(zip_longest(Node.ID.keys(), tPhip))
         Node.Psip = dict(zip_longest(Node.ID.keys(), tPsip))
         return
+
+    def find_min_max_indexes(lst):
+        min_value = min(lst)
+        max_value = max(lst)
+        min_index = lst.index(min_value)
+        max_index = lst.index(max_value)
+        return min_index, max_index
+
+    # input angle, E_begin, E_end, law, k
+    @staticmethod
+    def Calculate_E(y, z, y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k):
+        distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
+        D = ((y_end - y_begin) ** 2 + (z_end - z_begin) ** 2) ** 0.5
+        if law == 0:
+            Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
+        elif law == 1:
+            Node_E = E_begin * np.exp((distance / D) * np.log(E_end / E_begin))
+        elif law == 2:
+            if distance <= D / 2:
+                Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
+            else:
+                Node_E = E_begin + (E_end - E_begin) * (1 + (distance / D - 1) ** k)  # k > 1
+        return Node_E
+
+    # Get y_begin, z_begin
+    @staticmethod
+    def getNodeMaxMin():
+        DIS = []
+        for i in range(Node.Count):
+            dis = 0
+            dis = Node.Y[i] ** 2 + Node.Z[i] ** 2
+            DIS.append(dis)
+        min_index, max_index = Node.find_min_max_indexes(DIS)
+        y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
+        y_end, z_end = Node.Y[max_index], Node.Z[max_index]
+        return y_begin, z_begin, y_end, z_end
+
+    @staticmethod
+    def getNode_E(angle, E_begin, E_end, law, k):
+        E = []
+        angle = angle / 180 * np.pi
+        y_begin, z_begin, y_end, z_end = Node.getNodeMaxMin()
+        for ii in range(Node.Count):
+            E.append (Node.Calculate_E(Node.Y[ii], Node.Z[ii], y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k))
+        Node.Node_E = dict(enumerate(E))
+
 
 class Segment:
     Count = 0
@@ -415,6 +466,8 @@ class Fiber:
         tQy = np.zeros(Fiber.Count)
         tQz = np.zeros(Fiber.Count)
 
+        Node.getNode_E(Material.Gra_ang, Material.E_begin, Material.E_end,Material.Gra_law, Material.k)
+
         for i in range(Fiber.Count):
             (ttArea, ttSeq) = Tri3.GetA([Node.Y[Fiber.PointI[i]], Node.Y[Fiber.PointJ[i]], Node.Y[Fiber.PointK[i]]],
                                         [Node.Z[Fiber.PointI[i]], Node.Z[Fiber.PointJ[i]], Node.Z[Fiber.PointK[i]]])
@@ -437,6 +490,10 @@ class Fiber:
                                   tArea[i], tcy[i], tcz[i], tSeq[i])
             tQy[i] = tArea[i] * tcz[i]
             tQz[i] = tArea[i] * tcy[i]
+            Fiber.Material_AVE[i] = Tri3.getIntegrate_E([Node.Node_E[Fiber.PointI[i]], Node.Node_E[Fiber.PointJ[i]], Node.Node_E[Fiber.PointK[i]]],
+                                                  [Node.Y[Fiber.PointI[i]], Node.Y[Fiber.PointJ[i]], Node.Y[Fiber.PointK[i]]],
+                                                  [Node.Z[Fiber.PointI[i]], Node.Z[Fiber.PointJ[i]], Node.Z[Fiber.PointK[i]]])
+
 
         Fiber.Area = dict(enumerate(tArea))
         Fiber.cy = dict(enumerate(tcy))

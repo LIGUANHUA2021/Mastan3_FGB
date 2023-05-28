@@ -556,13 +556,14 @@ class msaFEModel:
         Type = {}
         #
         Gra = 0
-        Gra_ID = {}
-        E_ref = {}
-        E_begin ={}
-        E_end = {}
-        Gra_ang = {}
-        Gra_law = {}
-        GColor = {}
+        Gra_ID = 0
+        E_ref = 0
+        E_begin =0
+        E_end = 0
+        Gra_ang = 0
+        Gra_law = 0
+        GColor = 0
+        k = 0
         #
         # Add Material
         def Add(tID: int, tE: float, tnu: float, tFy: float, tDensity: float, teu: float, tType: str, tColor: str):
@@ -577,15 +578,16 @@ class msaFEModel:
             msaFEModel.Mat.Color[tID] = tColor
             msaFEModel.Mat.G[tID] = tE / (2.0 * (1.0 + tnu))
 
-        def Add_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: float, GColor: str):
+        def Add_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: int, GColor: str, k: float):
             msaFEModel.Mat.Gra += 1
-            msaFEModel.Mat.Gra_ID[GID] = msaFEModel.Mat.Gra - 1
+            msaFEModel.Mat.Gra_ID = msaFEModel.Mat.Gra - 1
             msaFEModel.Mat.E_ref = E_ref
             msaFEModel.Mat.E_begin = E_begin
             msaFEModel.Mat.E_end = E_end
             msaFEModel.Mat.Gra_ang = Gra_ang
-            msaFEModel.Mat.Gra_ang = Gra_law
-            msaFEModel.Mat.Gra_ang = GColor
+            msaFEModel.Mat.Gra_law = Gra_law
+            msaFEModel.Mat.GColor = GColor
+            msaFEModel.Mat.k = k
 
         # Remove Material
         def Remove(tID: int):
@@ -602,39 +604,40 @@ class msaFEModel:
             del msaFEModel.Mat.Color[tID]
             del msaFEModel.Mat.Type[tID]
 
-        def Remove_gra(GID: int):
-            if msaFEModel.CheckID(GID, msaFEModel.Mat.Gra_ID) == 0:
-                print('Warning! Please input the correct grade ID.')
-                return
-            del msaFEModel.Mat.Gra_ID[GID]
-            msaFEModel.Mat.Gra -= 1
-            del msaFEModel.Mat.E_ref[GID]
-            del msaFEModel.Mat.E_begin[GID]
-            del msaFEModel.Mat.E_end[GID]
-            del msaFEModel.Mat.Gra_ang[GID]
-            del msaFEModel.Mat.Gra_law[GID]
-            del msaFEModel.Mat.GColor[GID]
+        # def Remove_gra(GID: int):
+        #     if msaFEModel.CheckID(GID, msaFEModel.Mat.Gra_ID) == 0:
+        #         print('Warning! Please input the correct grade ID.')
+        #         return
+        #     del msaFEModel.Mat.Gra_ID[GID]
+        #     msaFEModel.Mat.Gra -= 1
+        #     del msaFEModel.Mat.E_ref[GID]
+        #     del msaFEModel.Mat.E_begin[GID]
+        #     del msaFEModel.Mat.E_end[GID]
+        #     del msaFEModel.Mat.Gra_ang[GID]
+        #     del msaFEModel.Mat.Gra_law[GID]
+        #     del msaFEModel.Mat.GColor[GID]
 
         # Modify Material
         def Modify(tID: int, tE: float, tnu: float, tFy: float, teu: float, tType: str):
-            if msaFEModel.CheckID(tID, msaFEModel.Mat.Gra_ID) == 0:
-                print('Warning! Please input the correct material ID.')
-                return
+            # if msaFEModel.CheckID(tID, msaFEModel.Mat.Gra_ID) == 0:
+            #     print('Warning! Please input the correct material ID.')
+            #     return
             msaFEModel.Mat.E[tID] = tE
             msaFEModel.Mat.nu[tID] = tnu
             msaFEModel.Mat.Fy[tID] = tFy
             msaFEModel.Mat.eu[tID] = teu
             msaFEModel.Mat.Type[tID] = tType
 
-        def Modify_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: float):
-            if msaFEModel.CheckID(GID, msaFEModel.Mat.ID) == 0:
-                print('Warning! Please input the correct material ID.')
-                return
-            msaFEModel.Mat.E_ref[GID] = E_ref
-            msaFEModel.Mat.E_begin[GID] = E_begin
-            msaFEModel.Mat.E_end[GID] = E_end
-            msaFEModel.Mat.Gra_ang[GID] = Gra_ang
-            msaFEModel.Mat.Gra_law[GID] = Gra_law
+        def Modify_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: int, k: float):
+            # if msaFEModel.CheckID(GID, msaFEModel.Mat.ID) == 0:
+            #     print('Warning! Please input the correct material ID.')
+            #     return
+            msaFEModel.Mat.E_ref = E_ref
+            msaFEModel.Mat.E_begin = E_begin
+            msaFEModel.Mat.E_end = E_end
+            msaFEModel.Mat.Gra_ang = Gra_ang
+            msaFEModel.Mat.Gra_law = Gra_law
+            msaFEModel.Mat.k = k
 
         # Reset Material
         @classmethod
@@ -649,13 +652,14 @@ class msaFEModel:
             msaFEModel.Mat.Color = {}
             msaFEModel.Mat.Type = {}
             msaFEModel.Mat.Gra = 0
-            msaFEModel.Mat.Gra_ID = {}
-            msaFEModel.Mat.E_ref = {}
-            msaFEModel.Mat.E_begin = {}
-            msaFEModel.Mat.E_end = {}
-            msaFEModel.Mat.Gra_ang = {}
-            msaFEModel.Mat.Gra_law = {}
-            msaFEModel.Mat.GColor = {}
+            msaFEModel.Mat.Gra_ID = 0
+            msaFEModel.Mat.E_ref = 0
+            msaFEModel.Mat.E_begin = 0
+            msaFEModel.Mat.E_end = 0
+            msaFEModel.Mat.Gra_ang = 0
+            msaFEModel.Mat.Gra_law = 0
+            msaFEModel.Mat.GColor = 0
+            msaFEModel.Mat.k = 0
 
     class Point:
         Count = 0

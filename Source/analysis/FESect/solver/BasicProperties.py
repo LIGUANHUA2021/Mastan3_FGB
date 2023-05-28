@@ -42,7 +42,8 @@ def GetIyIz(ID, FiberA, FiberIy, FiberIz, FiberCy, FiberCz, Y0, Z0, E_ref):
     EIz = 0
     for i in ID:
         mat_id = Model.Fiber.MaterialID[i]
-        E = Model.Material.E[mat_id]
+        # E = Model.Material.E[mat_id]
+        E = Model.Fiber.Material_AVE[i]
         EIy += E * (FiberIy[i] + FiberA[i] * (FiberCz[i] - Z0) ** 2)
         EIz += E * (FiberIz[i] + FiberA[i] * (FiberCy[i] - Y0) ** 2)
     Iy = EIy / E_ref
@@ -54,7 +55,8 @@ def GetIyz(ID, FiberA, FiberIyz, FiberCy, FiberCz, Y0, Z0, E_ref):
     EIyz = 0
     for i in ID:
         mat_id = Model.Fiber.MaterialID[i]
-        E = Model.Material.E[mat_id]
+        # E = Model.Material.E[mat_id]
+        E = Model.Fiber.Material_AVE[i]
         EIyz += E * (FiberIyz[i] + FiberA[i] * (FiberCy[i] - Y0) * (FiberCz[i] - Z0))
     Iyz = EIyz / E_ref
     return Iyz
@@ -65,7 +67,8 @@ def SumBilateralAreas(ID, VList, WList, PointI, PointJ, PointK, FiberArea, AxisV
     EAt = 0
     for i in ID:
         mat_id = Model.Fiber.MaterialID[i]
-        E = Model.Material.E[mat_id]
+        # E = Model.Material.E[mat_id]
+        E = Model.Fiber.Material_AVE[i]
         if VList[PointI[i]] >= AxisV and VList[PointJ[i]] >= AxisV and VList[PointK[i]] >= AxisV:
             EAc += E * FiberArea[i]
         elif VList[PointI[i]] <= AxisV and VList[PointJ[i]] <= AxisV and VList[PointK[i]] <= AxisV:
@@ -115,7 +118,8 @@ def GetZyZz(NodeY, NodeZ, ID, PointI, PointJ, PointK, FiberArea, FiberCy, FiberC
     EQzt = 0
     for i in ID:
         mat_id = Model.Fiber.MaterialID[i]
-        E = Model.Material.E[mat_id]
+        # E = Model.Material.E[mat_id]
+        E = Model.Fiber.Material_AVE[i]
         if NodeZ[PointI[i]] >= czp and NodeZ[PointJ[i]] >= czp and NodeZ[PointK[i]] >= czp:
             EQyc += E * FiberArea[i] * (FiberCz[i] - czp)
         elif NodeZ[PointI[i]] <= czp and NodeZ[PointJ[i]] <= czp and NodeZ[PointK[i]] <= czp:
@@ -182,7 +186,8 @@ def GetAomg(NodeV, NodeW, NodeOmega, PointI, PointJ, PointK, FiberID, GPNum, E_r
     (GPs, Wts) = GQ.GaussPointsTri(GPNum)
     for i in FiberID:
         mat_id = Model.Fiber.MaterialID[i]
-        E = Model.Material.E[mat_id]
+        # E = Model.Material.E[mat_id]
+        E = Model.Fiber.Material_AVE[i]
         tAomg = Tri3.GetAomg([NodeV[PointI[i]], NodeV[PointJ[i]], NodeV[PointK[i]]],
                              [NodeW[PointI[i]], NodeW[PointJ[i]], NodeW[PointK[i]]],
                              [NodeOmega[PointI[i]], NodeOmega[PointJ[i]], NodeOmega[PointK[i]]],
@@ -198,7 +203,8 @@ def GetAvomgAwomg(NodeV, NodeW, NodeOmega, PointI, PointJ, PointK, FiberID, GPNu
     (GPs, Wts) = GQ.GaussPointsTri(GPNum)
     for i in FiberID:
         mat_id = Model.Fiber.MaterialID[i]
-        E = Model.Material.E[mat_id]
+        # E = Model.Material.E[mat_id]
+        E = Model.Fiber.Material_AVE[i]
         (tAvomg, tAwomg) = Tri3.GetAvomgAwomg([NodeV[PointI[i]], NodeV[PointJ[i]], NodeV[PointK[i]]],
                                               [NodeW[PointI[i]], NodeW[PointJ[i]], NodeW[PointK[i]]],
                                               [NodeOmega[PointI[i]], NodeOmega[PointJ[i]], NodeOmega[PointK[i]]],
@@ -244,7 +250,7 @@ def GetIomg(NodeY, NodeZ, NodeOmega, FiberID, PointI, PointJ, PointK, GPNum, G_r
     (GPs, Wts) = GQ.GaussPointsTri(GPNum)
     for i in FiberID:
         mat_id = Model.Fiber.MaterialID[i]
-        G = Model.Material.G[mat_id]
+        G = Model.Fiber.Material_AVE[i] / (2 * (1 + Model.Material.nu[mat_id]))
         tIomg = Tri3.GetIomg([NodeY[PointI[i]], NodeY[PointJ[i]], NodeY[PointK[i]]],
                              [NodeZ[PointI[i]], NodeZ[PointJ[i]], NodeZ[PointK[i]]],
                              [NodeOmega[PointI[i]], NodeOmega[PointJ[i]], NodeOmega[PointK[i]]],
@@ -261,8 +267,10 @@ def GetWagnerCoef(NodeY, NodeZ, NodeOmega, FiberID, PointI, PointJ, PointK, ysc,
     (GPs, Wts) = GQ.GaussPointsTri(GPNum)
     for i in FiberID:
         mat_id = Model.Fiber.MaterialID[i]
-        E = Model.Material.E[mat_id]
-        G = Model.Material.G[mat_id]
+        # E = Model.Material.E[mat_id]
+        # G = Model.Material.G[mat_id]
+        E = Model.Fiber.Material_AVE[i]
+        G = Model.Fiber.Material_AVE[i] / (2 * (1 + Model.Material.nu[mat_id]))
         (ttBetay, ttBetaz, ttBetaomg) = Tri3.GetWagnerCoefIntg([NodeY[PointI[i]], NodeY[PointJ[i]], NodeY[PointK[i]]],
                                                                [NodeZ[PointI[i]], NodeZ[PointJ[i]], NodeZ[PointK[i]]],
                                                                [NodeOmega[PointI[i]], NodeOmega[PointJ[i]], NodeOmega[PointK[i]]],
@@ -345,10 +353,11 @@ def CalSectProps(RunAutoMesh, E_ref):
     pl.Print(pl.BPLog.CalSectProp(Fiber))
     SP.Perimeter = GetPerimeter(Model.Outline.ID, Model.Outline.Type, Model.Outline.Point1, Model.Outline.Point2,
                                 Model.Point.Y, Model.Point.Z)
+    # Model.Node.Node_E = Model.Node.getNode_E(Model.Material.Gra_ang, Model.Material.E_begin, Model.Material.E_end, Model.Material.Gra_law, Model.Material.k)
     if RunAutoMesh == 0:
-        SP.Area = sum([Model.Material.E[Model.Fiber.MaterialID[i]] * Model.Fiber.Area[i] for i in Model.Fiber.ID]) / E_ref
-        SP.Qy = sum([Model.Material.E[Model.Fiber.MaterialID[i]] * Model.Fiber.Qy[i] for i in Model.Fiber.ID]) / E_ref
-        SP.Qz = sum([Model.Material.E[Model.Fiber.MaterialID[i]] * Model.Fiber.Qz[i] for i in Model.Fiber.ID]) / E_ref
+        SP.Area = sum([Model.Fiber.Material_AVE[i] * Model.Fiber.Area[i] for i in Model.Fiber.ID]) / E_ref
+        SP.Qy = sum([Model.Fiber.Material_AVE[i] * Model.Fiber.Qy[i] for i in Model.Fiber.ID]) / E_ref
+        SP.Qz = sum([Model.Fiber.Material_AVE[i] * Model.Fiber.Qz[i] for i in Model.Fiber.ID]) / E_ref
         SP.cy = SP.Qz / SP.Area
         SP.cz = SP.Qy / SP.Area
         Model.Node.ReadLocal(SP.cy, SP.cz)

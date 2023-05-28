@@ -32,6 +32,8 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
         self.mw = mw
         self.tMatType='S'
         self.initDialog()
+        self.Law = 0
+        self.comboBox.currentIndexChanged.connect(self.Law_add)
         # self.MatType_comboBox.currentIndexChanged.connect(self.refresh_Material)
 
     def initDialog(self):
@@ -59,11 +61,19 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
         self.Mu_Input.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
         self.fy_Input.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
         self.eu_input.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.E_begin_lineEdit.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.E_end_lineEdit.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.Gra_ang_lineEdit.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.k_lineEdit.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
 
         self.E_Input.setText(str(205000.0))
         self.Mu_Input.setText(str(0.3))
         self.fy_Input.setText(str(345.0))
         self.eu_input.setText(str(0.15))
+        self.E_begin_lineEdit.setText(str(70000.0))
+        self.E_end_lineEdit.setText(str(205000.0))
+        self.Gra_ang_lineEdit.setText(str(90))
+        self.k_lineEdit.setText(str(2))
 
     @Slot()
     def on_Import_pushButton_clicked(self):
@@ -77,6 +87,14 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
         Ui.OKsignal.connect(self.get_dialog_signal)
         Ui.exec()
 
+    def Law_add(self):
+        if self.comboBox.currentText() == "Power law":
+            self.Law = 0
+        elif self.comboBox.currentText() == "Exponential law":
+            self.Law = 1
+        elif self.comboBox.currentText() == "Sigmoid law":
+            self.Law = 2
+
     @Slot()
     def on_MaterialAdd_pushButton_clicked(self):
         """
@@ -85,7 +103,8 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
         # TODO: not implemented yet
         #raise NotImplementedError
         try:
-            if len(self.E_Input.text()) == 0 or len(self.Mu_Input.text()) == 0 or len(self.fy_Input.text()) == 0:
+            if len(self.E_Input.text()) == 0 or len(self.Mu_Input.text()) == 0 or len(self.fy_Input.text()) == 0 or\
+                    len(self.E_begin_lineEdit.text()) == 0 or len(self.E_end_lineEdit.text()) == 0 or len(self.Gra_ang_lineEdit.text()) == 0 or len(self.k_lineEdit.text()) == 0:
                 showMesbox(self, 'Please input correct data!')
             else:
                 tE = float(self.E_Input.text())
@@ -93,6 +112,10 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
                 tfy = float(self.fy_Input.text())
                 id = int(self.MatIDInput.text())
                 teu = float(self.eu_input.text())
+                E_begin = float(self.E_begin_lineEdit.text())
+                E_end = float(self.E_end_lineEdit.text())
+                Gra_ang = float(self.Gra_ang_lineEdit.text())
+                k = float(self.k_lineEdit.text())
                 # print("teu = ", teu)
                 MatIdDict = msaModel.Mat.ID
                 # Reasonable checking
@@ -112,6 +135,7 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
                         msaModel.Mat.Add(tID=id, tE=tE, tnu=tμ, tFy=tfy, tDensity=999999, teu=teu, tType=self.tMatType, tColor='#aaffff')
                     elif self.mw.Outline_radioButton.isChecked():
                         msaFEModel.Mat.Add(tID=id, tE=tE, tnu=tμ, tFy=tfy, tDensity=999999, teu=teu, tType=self.tMatType, tColor='#aaffff')
+                        msaFEModel.Mat.Add_gra(GID=1, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law, GColor='#aaffff', k= k)
                     self.mw.ResetTable()
                     self.accept()
         except:

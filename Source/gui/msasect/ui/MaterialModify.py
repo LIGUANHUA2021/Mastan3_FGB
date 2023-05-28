@@ -34,6 +34,9 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
         self.getPointInfo(id)
         self.id = id
         self.initDialog()
+        self.Law = 0
+        self.comboBox.currentIndexChanged.connect(self.Law_add)
+
         # self.MatType_comboBox.currentIndexChanged.connect(self.refresh_Material)
 
     def refresh_Material(self):
@@ -42,6 +45,11 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
             self.Mu_Input.setText(str(0.3))
             self.fy_Input.setText(str(345))
             self.eu_input.setText(str(0.15))
+
+            self.E_begin_lineEdit.setText(str(70000.0))
+            self.E_end_lineEdit.setText(str(205000.0))
+            self.Gra_ang_lineEdit.setText(str(90))
+            self.k_lineEdit.setText(str(2))
         # elif self.MatType_comboBox.currentText() == "Concrete":
         #     self.E_Input.setText(str(34500))
         #     self.Mu_Input.setText(str(0.2))
@@ -62,6 +70,14 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
         #     self.Mu_Input.setText(str(''))
         #     self.fy_Input.setText(str(''))
         #     self.eu_input.setText(str(''))
+
+    def Law_add(self):
+        if self.comboBox.currentText() == "Power law":
+            self.Law = 0
+        elif self.comboBox.currentText() == "Exponential law":
+            self.Law = 1
+        elif self.comboBox.currentText() == "Sigmoid law":
+            self.Law = 2
 
 
     def initDialog(self):
@@ -84,6 +100,14 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
         self.Mu_Input.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
         self.fy_Input.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
         self.eu_input.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.E_begin_lineEdit.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.E_end_lineEdit.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.Gra_ang_lineEdit.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.k_lineEdit.setValidator(QRegularExpressionValidator("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"))
+        self.E_begin_lineEdit.setText(str(70000.0))
+        self.E_end_lineEdit.setText(str(205000.0))
+        self.Gra_ang_lineEdit.setText(str(90))
+        self.k_lineEdit.setText(str(2))
 
     @Slot()
     def on_Import_pushButton_clicked(self):
@@ -148,6 +172,10 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
             tfy = float(self.fy_Input.text())
             id = int(self.MatIDInput.text())
             teu = float(self.eu_input.text())
+            E_begin = float(self.E_begin_lineEdit.text())
+            E_end = float(self.E_end_lineEdit.text())
+            Gra_ang = float(self.Gra_ang_lineEdit.text())
+            k = float(self.k_lineEdit.text())
             tMatTypeIndex = "S"
             tCMatType = "S"
             # if tMatTypeIndex == 0:
@@ -177,6 +205,7 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
             if self.mw.Centerline_radioButton.isChecked() == True:
                 msaModel.Mat.Modify(tID=id, tE=tE, tnu=tnu, tFy=tfy, teu=teu, tType=tCMatType)
             elif self.mw.Outline_radioButton.isChecked() == True:
+                msaFEModel.Mat.Modify_gra(GID=1, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law,k=k)
                 msaFEModel.Mat.Modify(tID=id, tE=tE, tnu=tnu, tFy=tfy, teu=teu, tType=tCMatType)
             self.mw.ResetTable()
             self.accept()

@@ -342,26 +342,33 @@ def GetKappa(y, z, Phi, Psi, Iy, Iz, Iyz, nu, GPNum, GPs, Wts):
         Kappaz += np.squeeze(0.5 * Wts[i] * (Psi.T.dot(B.T) - nu / 2 * d.T).dot(B.dot(Psi) - nu / 2 * d) * abs(np.linalg.det(MtxJ)))
     return Kappay, Kappaz
 
+# Distributionn of E in a Fiber
+def getIntegrate_E(Fiber_E, Y, Z):
+    x1 = Y[0]
+    y1 = Z[0]
+    f1 = Fiber_E[0]
+    x2 = Y[1]
+    y2 = Z[1]
+    f2 = Fiber_E[1]
+    x3 = Y[2]
+    y3 = Z[2]
+    f3 = Fiber_E[2]
 
-def getFibergrade(x, y ,Fiber_E, Y, Z):
-    # E's distribution in each fiber
+    def getFibergrade(x, y):
+        # E's distribution in each fiber
 
-    x1 = Y[0], y1 = Z[0], f1 = Fiber_E[0]
-    x2 = Y[1], y2 = Z[1], f2 = Fiber_E[1]
-    x3 = Y[2], y3 = Z[2], f3 = Fiber_E[2]
-    alpha = ((y2 - y3)*(x - x3) + (x3 - x2)*(y - y3)) / ((y2 - y3)*(x1 - x3) + (x3 - x2)*(y1 - y3))
-    beta = ((y3 - y1)*(x - x3) + (x1 - x3)*(y - y3)) / ((y2 - y3)*(x1 - x3) + (x3 - x2)*(y1 - y3))
-    gamma = 1 - alpha - beta
+        alpha = ((y2 - y3) * (x - x3) + (x3 - x2) * (y - y3)) / ((y2 - y3) * (x1 - x3) + (x3 - x2) * (y1 - y3))
+        beta = ((y3 - y1) * (x - x3) + (x1 - x3) * (y - y3)) / ((y2 - y3) * (x1 - x3) + (x3 - x2) * (y1 - y3))
+        gamma = 1 - alpha - beta
 
-    f = alpha * f1 + beta * f2 + gamma * f3
-    return f
+        f = alpha * f1 + beta * f2 + gamma * f3
+        return f
 
-def getInter_E(f, Fiber_E, Y, Z):
-    x1 = Y[0], y1 = Z[0], f1 = Fiber_E[0]
-    x2 = Y[1], y2 = Z[1], f2 = Fiber_E[1]
-    x3 = Y[2], y3 = Z[2], f3 = Fiber_E[2]
+    def integrand(x, y):
+        return getFibergrade(x, y)
+
     # 计算三角形面积
-    triangle_area = 0.5 * np.abs((x1 - x3) * (y2 - y1) - (x1 - x2) * (y3 - y1))
+    triangle_area = 0.5 * (x1 - x3) * (y2 - y1) - (x1 - x2) * (y3 - y1)
 
     # 确定顶点顺序
     if triangle_area < 0:
@@ -372,9 +379,6 @@ def getInter_E(f, Fiber_E, Y, Z):
         triangle_vertices = [(x1, y1), (x2, y2), (x3, y3)]
 
     # 计算积分值
-    result, error = integrate.dblquad(f, triangle_vertices[0][0], triangle_vertices[2][0],
+    result, error = integrate.dblquad(integrand, triangle_vertices[0][0], triangle_vertices[2][0],
                                       lambda x: triangle_vertices[0][1], lambda x: triangle_vertices[1][1])
-    return result
-
-def getGrade():
-    return
+    return np.abs(result / triangle_area)
