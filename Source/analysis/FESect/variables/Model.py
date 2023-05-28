@@ -311,7 +311,7 @@ class Node:
     # input angle, E_begin, E_end, law, k
     @staticmethod
     def Calculate_E(y, z, y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k):
-        B = np.array([y_end - y_begin, z_end - z_begin])
+        B = np.array([np.cos(angle), np.sin(angle)])
         A = np.array([y - y_begin, z- z_begin])
         A_length = np.linalg.norm(A)
         if A_length == 0:
@@ -320,7 +320,11 @@ class Node:
             cos_theta = np.dot(A, B) / (np.linalg.norm(A) * np.linalg.norm(B))
             distance = A_length * cos_theta
             # distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
-            D = ((y_end - y_begin) ** 2 + (z_end - z_begin) ** 2) ** 0.5 *np.cos(np.arctan(z_end/y_end)-angle)
+            D_arry = np.array([y_end - y_begin, z_end - z_begin])
+            D_length = np.linalg.norm(D_arry)
+            D_cos_theta = np.dot(D_arry, B) / (np.linalg.norm(D_arry) * np.linalg.norm(B))
+            D = D_length * D_cos_theta
+
             if law == 0:
                 Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
             elif law == 1:
