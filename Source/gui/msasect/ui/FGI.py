@@ -173,7 +173,7 @@ class FGI_Dialog(QDialog, Ui_FGI_Dialog):
                         colors =[]
                         E = []
                         values = [int(i * 250 / (StripNum/2)) for i in range(int(StripNum/2))]
-                        E1=[round(E0+(Ei-E0)*((1-n/StripNum)**k), 3) for n in va]
+                        E1=[round(E0+(Ei-E0)*(1-(n/StripNum)**k), 3) for n in va]
                         E2=[round(E0+(Ei-E0)*(n/StripNum)**k, 3) for n in va]
                         color1 = ["#%02x%02x%02x" % (int(g), 255, 255) for g in values]
                         color2 = ["#%02x%02x%02x" % (255-int(g), 255, 255) for g in values]

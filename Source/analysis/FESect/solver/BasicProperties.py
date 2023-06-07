@@ -235,7 +235,8 @@ def GetJ(NodeY, NodeZ, NodeOmega, FiberID, PointI, PointJ, PointK, cys, czs, GPN
     (GPs, Wts) = GQ.GaussPointsTri(GPNum)
     for i in FiberID:
         mat_id = Model.Fiber.MaterialID[i]
-        G = Model.Material.G[mat_id]
+        E = Model.Fiber.Material_AVE[i]
+        G = E / (2 * (1+Model.Material.nu[mat_id]))
         tJ = Tri3.GetJ([NodeY[PointI[i]], NodeY[PointJ[i]], NodeY[PointK[i]]],
                        [NodeZ[PointI[i]], NodeZ[PointJ[i]], NodeZ[PointK[i]]],
                        [NodeOmega[PointI[i]], NodeOmega[PointJ[i]], NodeOmega[PointK[i]]],

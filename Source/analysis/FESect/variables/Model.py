@@ -317,13 +317,8 @@ class Node:
         if A_length == 0:
             Node_E = E_begin
         else:
-            cos_theta = np.dot(A, B) / (np.linalg.norm(A) * np.linalg.norm(B))
-            distance = A_length * cos_theta
-            # distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
-            D_arry = np.array([y_end - y_begin, z_end - z_begin])
-            D_length = np.linalg.norm(D_arry)
-            D_cos_theta = np.dot(D_arry, B) / (np.linalg.norm(D_arry) * np.linalg.norm(B))
-            D = D_length * D_cos_theta
+            distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
+            D = (y_end - y_begin) * np.cos(angle) + (z_end - z_begin) * np.sin(angle)
 
             if law == 0:
                 Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
@@ -333,16 +328,16 @@ class Node:
                 if distance <= D / 2:
                     Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
                 else:
-                    Node_E = E_begin + (E_end - E_begin) * (1 + (distance / D - 1) ** k)  # k > 1
+                    Node_E = E_begin + (E_end - E_begin) * (1 - (1-distance / D) ** k)  # k > 1
         return Node_E
 
     # Get y_begin, z_begin
     @staticmethod
-    def getNodeMaxMin():
+    def getNodeMaxMin(theta):
         DIS = []
         for i in range(Node.Count):
             dis = 0
-            dis = Node.Y[i] ** 2 + Node.Z[i] ** 2
+            dis = Node.Y[i] * np.cos(theta) + Node.Z[i] * np.cos(theta)
             DIS.append(dis)
         min_index, max_index = Node.find_min_max_indexes(DIS)
         y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
@@ -353,7 +348,7 @@ class Node:
     def getNode_E(angle, E_begin, E_end, law, k):
         E = []
         angle = angle / 180 * np.pi
-        y_begin, z_begin, y_end, z_end = Node.getNodeMaxMin()
+        y_begin, z_begin, y_end, z_end = Node.getNodeMaxMin(angle)
         for ii in range(Node.Count):
             E.append (Node.Calculate_E(Node.Y[ii], Node.Z[ii], y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k))
         Node.Node_E = dict(enumerate(E))

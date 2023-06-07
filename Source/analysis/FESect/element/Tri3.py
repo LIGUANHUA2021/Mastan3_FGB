@@ -357,11 +357,11 @@ def getIntegrate_E(Fiber_E, Y, Z):
     def getFibergrade(x, y):
         # E's distribution in each fiber
 
-        alpha = ((y2 - y3) * (x - x3) + (x3 - x2) * (y - y3)) / ((y2 - y3) * (x1 - x3) + (x3 - x2) * (y1 - y3))
-        beta = ((y3 - y1) * (x - x3) + (x1 - x3) * (y - y3)) / ((y2 - y3) * (x1 - x3) + (x3 - x2) * (y1 - y3))
-        gamma = 1 - alpha - beta
+        w1 = ((x2 - x3) * (y - y3) - (x - x3) * (y2 - y3)) / ((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3))
+        w2 = ((x3 - x1) * (y - y3) - (x - x3) * (y3 - y1)) / ((x2 - x3) * (y1 - y3) - (x1 - x3) * (y2 - y3))
+        w3 = 1 - w1 - w2
 
-        f = alpha * f1 + beta * f2 + gamma * f3
+        f = w1 * f1 + w2 * f2 + w3 * f3
         return f
 
     def integrand(x, y):
@@ -381,4 +381,5 @@ def getIntegrate_E(Fiber_E, Y, Z):
     # 计算积分值
     result, error = integrate.dblquad(integrand, triangle_vertices[0][0], triangle_vertices[2][0],
                                       lambda x: triangle_vertices[0][1], lambda x: triangle_vertices[1][1])
-    return np.abs(result / triangle_area)
+    # return np.abs(result / triangle_area)
+    return (f1 + f2 + f3) / 3
