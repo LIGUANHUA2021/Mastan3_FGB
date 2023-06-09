@@ -314,11 +314,13 @@ class Node:
         B = np.array([np.cos(angle), np.sin(angle)])
         A = np.array([y - y_begin, z- z_begin])
         A_length = np.linalg.norm(A)
+        D = (y_end - y_begin) * np.cos(angle) + (z_end - z_begin) * np.sin(angle)
         if A_length == 0:
             Node_E = E_begin
+        elif A_length == D:
+            Node_E = E_end
         else:
             distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
-            D = (y_end - y_begin) * np.cos(angle) + (z_end - z_begin) * np.sin(angle)
 
             if law == 0:
                 Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
