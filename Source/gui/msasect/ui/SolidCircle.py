@@ -67,9 +67,12 @@ class SolidCircle_Dialog(QDialog, Ui_SolidCircle_Dialog):
 
         self.B_inputlineEdit.setValidator(doubleValidator)
         self.D_inputlineEdit.setValidator(doubleValidator)
-
+        self.Oy_lineEdit.setValidator(doubleValidator)
+        self.Oz_lineEdit.setValidator(doubleValidator)
         self.B_inputlineEdit.setText(str(800))
-        self.D_inputlineEdit.setText(str(500))
+        self.D_inputlineEdit.setText(str(800))
+        self.Oy_lineEdit.setText(str(400))
+        self.Oz_lineEdit.setText(str(400))
 
     @Slot()
     def on_Centerline_radioButton_clicked(self):
@@ -102,7 +105,8 @@ class SolidCircle_Dialog(QDialog, Ui_SolidCircle_Dialog):
         num = 50
         try:
             if len(self.E_inputlineEdit.text()) == 0 or len(self.G_inputlineEdit.text()) == 0 or len(
-                    self.fy_inputlineEdit.text()) == 0 or len(self.B_inputlineEdit.text()) == 0 or len(self.D_inputlineEdit.text()) == 0 :
+                    self.fy_inputlineEdit.text()) == 0 or len(self.B_inputlineEdit.text()) == 0 or len(self.D_inputlineEdit.text()) == 0 or len(
+                    self.Oy_lineEdit.text()) == 0 or len(self.Oz_lineEdit.text()) == 0:
                 showMesbox(self, 'Please input correct data!')
             else:
                 msaModel.ResetAll()
@@ -122,6 +126,8 @@ class SolidCircle_Dialog(QDialog, Ui_SolidCircle_Dialog):
                 teu = float(self.eu_inputlineEdit.text())
                 B = float(self.B_inputlineEdit.text())
                 D = float(self.D_inputlineEdit.text())
+                Oy = float(self.Oy_lineEdit.text())
+                Oz = float(self.Oz_lineEdit.text())
                 if B<0 or D<0 or tE<0 or tμ<0 or tfy<0 or teu<0:
                     showMesbox(self, 'Please input correct data!')
                 else:
@@ -134,8 +140,8 @@ class SolidCircle_Dialog(QDialog, Ui_SolidCircle_Dialog):
                         B = float(self.B_inputlineEdit.text())
                         D = float(self.D_inputlineEdit.text())
                         for i in range(num):
-                            msaFEModel.Point.Add(tID=i + 1, ty=np.around(D / 2 * np.cos(theta), decimals=3),
-                                                 tz=np.around(B / 2 * np.sin(theta), decimals=3))
+                            msaFEModel.Point.Add(tID=i + 1, ty=np.around(D / 2 * np.cos(theta) + Oy, decimals=3),
+                                                 tz=np.around(B / 2 * np.sin(theta) + Oz, decimals=3))
                             theta += 2 * np.pi / (num)
                         for i in range(num - 1):
                             msaFEModel.Outline.Add(tID=i + 1, tGID=1, tType="S", tLID=1, tPSID=i + 1, tPEID=i + 2)
