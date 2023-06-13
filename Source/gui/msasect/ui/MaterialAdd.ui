@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>335</width>
-    <height>396</height>
+    <height>416</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>335</width>
-    <height>216</height>
+    <height>416</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>335</width>
-    <height>2160</height>
+    <height>416</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -123,18 +123,23 @@
         <property name="verticalSpacing">
          <number>12</number>
         </property>
-        <item row="8" column="0">
-         <widget class="QLabel" name="Gra_law_label">
-          <property name="text">
-           <string>Gra_law:</string>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="MatIDInput">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>22</height>
+           </size>
           </property>
-         </widget>
-        </item>
-        <item row="6" column="1">
-         <widget class="QLineEdit" name="E_end_lineEdit">
+          <property name="maximumSize">
+           <size>
+            <width>124</width>
+            <height>22</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">*{	
-	font: 10pt &quot;Times New Roman&quot;;
+	font: 9pt &quot;Segoe UI&quot;;
 	color: rgb(0, 0, 0);
 	background: rgb(255, 255, 255);
 }
@@ -142,31 +147,53 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="OutlineID_Label">
-          <property name="font">
-           <font>
-            <family>Segoe UI</family>
-            <pointsize>9</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
+        <item row="8" column="1">
+         <widget class="QComboBox" name="comboBox">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 9pt &quot;Segoe UI&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}</string>
           </property>
-          <property name="text">
-           <string>Young's Modulus of Elasticity, E:</string>
-          </property>
+          <item>
+           <property name="text">
+            <string>Power law</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Exponential law</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Sigmoid law</string>
+           </property>
+          </item>
          </widget>
         </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="E_Input">
           <property name="minimumSize">
            <size>
-            <width>169</width>
-            <height>0</height>
+            <width>0</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="text">
-           <string>Material ID:</string>
+          <property name="maximumSize">
+           <size>
+            <width>124</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 9pt &quot;Segoe UI&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
           </property>
          </widget>
         </item>
@@ -187,6 +214,143 @@
           <property name="styleSheet">
            <string notr="true">*{	
 	font: 9pt &quot;Segoe UI&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="MatID_Label">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Poisson's Ratio, μ:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QLineEdit" name="E_end_lineEdit">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 10pt &quot;Times New Roman&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Maximum Tensile Strain, eu:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="PointIID_label">
+          <property name="text">
+           <string>Characteristic Strength, fy:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="eu_input">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 9pt &quot;Segoe UI&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="OutlineID_Label">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Young's Modulus of Elasticity, E:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>E_end:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="minimumSize">
+           <size>
+            <width>169</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Material ID:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Gra_ang:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>E_begin:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="E_begin_lineEdit">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 10pt &quot;Times New Roman&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="Gra_law_label">
+          <property name="text">
+           <string>Gra_law:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <widget class="QLineEdit" name="Gra_ang_lineEdit">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 10pt &quot;Times New Roman&quot;;
 	color: rgb(0, 0, 0);
 	background: rgb(255, 255, 255);
 }
@@ -224,172 +388,6 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Maximum Tensile Strain, eu:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="1">
-         <widget class="QComboBox" name="comboBox">
-          <property name="styleSheet">
-           <string notr="true">*{	
-	font: 9pt &quot;Segoe UI&quot;;
-	color: rgb(0, 0, 0);
-	background: rgb(255, 255, 255);
-}</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>Power law</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Exponential law</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Sigmoid law</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QLabel" name="label_4">
-          <property name="text">
-           <string>E_end:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="MatIDInput">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>124</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">*{	
-	font: 9pt &quot;Segoe UI&quot;;
-	color: rgb(0, 0, 0);
-	background: rgb(255, 255, 255);
-}
-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="MatID_Label">
-          <property name="font">
-           <font>
-            <family>Segoe UI</family>
-            <pointsize>9</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Poisson's Ratio, μ:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QLineEdit" name="E_begin_lineEdit">
-          <property name="styleSheet">
-           <string notr="true">*{	
-	font: 10pt &quot;Times New Roman&quot;;
-	color: rgb(0, 0, 0);
-	background: rgb(255, 255, 255);
-}
-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="0">
-         <widget class="QLabel" name="label_5">
-          <property name="text">
-           <string>Gra_ang:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="E_Input">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>124</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">*{	
-	font: 9pt &quot;Segoe UI&quot;;
-	color: rgb(0, 0, 0);
-	background: rgb(255, 255, 255);
-}
-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="1">
-         <widget class="QLineEdit" name="Gra_ang_lineEdit">
-          <property name="styleSheet">
-           <string notr="true">*{	
-	font: 10pt &quot;Times New Roman&quot;;
-	color: rgb(0, 0, 0);
-	background: rgb(255, 255, 255);
-}
-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>E_begin:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="PointIID_label">
-          <property name="text">
-           <string>Characteristic Strength, fy:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QLineEdit" name="eu_input">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">*{	
-	font: 9pt &quot;Segoe UI&quot;;
-	color: rgb(0, 0, 0);
-	background: rgb(255, 255, 255);
-}
-</string>
-          </property>
-         </widget>
-        </item>
         <item row="9" column="0">
          <widget class="QLabel" name="label_7">
           <property name="text">
@@ -407,6 +405,34 @@
 }
 </string>
           </property>
+         </widget>
+        </item>
+        <item row="10" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Direction Type:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="1">
+         <widget class="QComboBox" name="DirType_comboBox">
+          <property name="styleSheet">
+           <string notr="true">*{	
+	font: 9pt &quot;Segoe UI&quot;;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+}</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Single direction</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Radial</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
@@ -538,6 +564,22 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>MatIDInput</tabstop>
+  <tabstop>E_Input</tabstop>
+  <tabstop>Mu_Input</tabstop>
+  <tabstop>fy_Input</tabstop>
+  <tabstop>eu_input</tabstop>
+  <tabstop>E_begin_lineEdit</tabstop>
+  <tabstop>E_end_lineEdit</tabstop>
+  <tabstop>Gra_ang_lineEdit</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>k_lineEdit</tabstop>
+  <tabstop>DirType_comboBox</tabstop>
+  <tabstop>Import_pushButton</tabstop>
+  <tabstop>MaterialAdd_pushButton</tabstop>
+  <tabstop>MatchAddCancel_pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

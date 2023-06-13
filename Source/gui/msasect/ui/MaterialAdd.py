@@ -33,7 +33,9 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
         self.tMatType='S'
         self.initDialog()
         self.Law = 0
+        self.Gra_Type = 0
         self.comboBox.currentIndexChanged.connect(self.Law_add)
+        self.DirType_comboBox.currentIndexChanged.connect(self.Type_add)
         # self.MatType_comboBox.currentIndexChanged.connect(self.refresh_Material)
 
     def initDialog(self):
@@ -95,6 +97,12 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
         elif self.comboBox.currentText() == "Sigmoid law":
             self.Law = 2
 
+    def Type_add(self):
+        if self.DirType_comboBox.currentText() == "Single direction":
+            self.Gra_Type = 0
+        elif self.DirType_comboBox.currentText() == "Radial":
+            self.Gra_Type = 1
+
     @Slot()
     def on_MaterialAdd_pushButton_clicked(self):
         """
@@ -135,7 +143,7 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
                         msaModel.Mat.Add(tID=id, tE=tE, tnu=tμ, tFy=tfy, tDensity=999999, teu=teu, tType=self.tMatType, tColor='#aaffff')
                     elif self.mw.Outline_radioButton.isChecked():
                         msaFEModel.Mat.Add(tID=id, tE=tE, tnu=tμ, tFy=tfy, tDensity=999999, teu=teu, tType=self.tMatType, tColor='#aaffff')
-                        msaFEModel.Mat.Add_gra(GID=1, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law, GColor='#aaffff', k= k)
+                        msaFEModel.Mat.Add_gra(GID=1, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law,Gra_Type = self.Gra_Type, GColor='#aaffff', k= k)
                     self.mw.ResetTable()
                     self.accept()
         except:

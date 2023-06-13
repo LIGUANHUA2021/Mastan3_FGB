@@ -42,6 +42,7 @@ class Material:
     E_end = 0
     Gra_ang = 0
     Gra_law = 0
+    Gra_Type  = 0
     GColor = 0
     k = 0
 
@@ -72,6 +73,7 @@ class Material:
         Material.E_end = 0
         Material.Gra_ang = 0
         Material.Gra_law = 0
+        Material.Gra_Type = 0
         Material.GColor = 0
         Material.k = 0
         return
@@ -92,6 +94,7 @@ class Material:
         Material.E_end = MatInfo.E_end
         Material.Gra_ang = MatInfo.Gra_ang
         Material.Gra_law = MatInfo.Gra_law
+        Material.Gra_Type = MatInfo.Gra_Type
         Material.GColor = MatInfo.GColor
         Material.k = MatInfo.k
 
@@ -310,49 +313,77 @@ class Node:
 
     # input angle, E_begin, E_end, law, k
     @staticmethod
-    def Calculate_E(y, z, y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k):
-        B = np.array([np.cos(angle), np.sin(angle)])
-        A = np.array([y - y_begin, z- z_begin])
-        A_length = np.linalg.norm(A)
-        D = (y_end - y_begin) * np.cos(angle) + (z_end - z_begin) * np.sin(angle)
-        if A_length == 0:
-            Node_E = E_begin
-        elif A_length == D:
-            Node_E = E_end
-        else:
-            distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
+    def Calculate_E(y, z, y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k, Type):
+        if Type == 0:
+            B = np.array([np.cos(angle), np.sin(angle)])
+            A = np.array([y - y_begin, z- z_begin])
+            A_length = np.linalg.norm(A)
+            D = (y_end - y_begin) * np.cos(angle) + (z_end - z_begin) * np.sin(angle)
+            if A_length == 0:
+                Node_E = E_begin
+            elif A_length == D:
+                Node_E = E_end
+            else:
+                distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
 
-            if law == 0:
-                Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
-            elif law == 1:
-                Node_E = E_begin * np.exp((distance / D) * np.log(E_end / E_begin))
-            elif law == 2:
-                if distance <= D / 2:
+                if law == 0:
                     Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
-                else:
-                    Node_E = E_begin + (E_end - E_begin) * (1 - (1-distance / D) ** k)  # k > 1
+                elif law == 1:
+                    Node_E = E_begin * np.exp((distance / D) * np.log(E_end / E_begin))
+                elif law == 2:
+                    if distance <= D / 2:
+                        Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
+                    else:
+                        Node_E = E_begin + (E_end - E_begin) * (1 - (1-distance / D) ** k)  # k > 1
+        else:
+            D = np.sqrt(y_end ** 2 + z_end ** 2) - np.sqrt(y_begin ** 2 + z_begin ** 2)
+            distance = np.sqrt(y ** 2 + z ** 2) - np.sqrt(y_begin ** 2 + z_begin ** 2)
+            if distance == 0:
+                Node_E = E_begin
+            elif distance == D:
+                Node_E = E_end
+            else:
+                if law == 0:
+                    Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
+                elif law == 1:
+                    Node_E = E_begin * np.exp((distance / D) * np.log(E_end / E_begin))
+                elif law == 2:
+                    if distance <= D / 2:
+                        Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
+                    else:
+                        Node_E = E_begin + (E_end - E_begin) * (1 - (1 - distance / D) ** k)  # k > 1
         return Node_E
 
     # Get y_begin, z_begin
     @staticmethod
-    def getNodeMaxMin(theta):
-        DIS = []
-        for i in range(Node.Count):
-            dis = 0
-            dis = Node.Y[i] * np.cos(theta) + Node.Z[i] * np.cos(theta)
-            DIS.append(dis)
-        min_index, max_index = Node.find_min_max_indexes(DIS)
-        y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
-        y_end, z_end = Node.Y[max_index], Node.Z[max_index]
+    def getNodeMaxMin(theta, Type):
+        if Type == 0:
+            DIS = []
+            for i in range(Node.Count):
+                dis = 0
+                dis = Node.Y[i] * np.cos(theta) + Node.Z[i] * np.cos(theta)
+                DIS.append(dis)
+            min_index, max_index = Node.find_min_max_indexes(DIS)
+            y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
+            y_end, z_end = Node.Y[max_index], Node.Z[max_index]
+        else:
+            DIS = []
+            for i in range(Node.Count):
+                dis = 0
+                dis = np.sqrt(Node.Y[i] ** 2 + Node.Z[i] **2)
+                DIS.append(dis)
+            min_index, max_index = Node.find_min_max_indexes(DIS)
+            y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
+            y_end, z_end = Node.Y[max_index], Node.Z[max_index]
         return y_begin, z_begin, y_end, z_end
 
     @staticmethod
-    def getNode_E(angle, E_begin, E_end, law, k):
+    def getNode_E(angle, E_begin, E_end, law, k, Type):
         E = []
         angle = angle / 180 * np.pi
-        y_begin, z_begin, y_end, z_end = Node.getNodeMaxMin(angle)
+        y_begin, z_begin, y_end, z_end = Node.getNodeMaxMin(angle, Type)
         for ii in range(Node.Count):
-            E.append (Node.Calculate_E(Node.Y[ii], Node.Z[ii], y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k))
+            E.append (Node.Calculate_E(Node.Y[ii], Node.Z[ii], y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k, Type))
         Node.Node_E = dict(enumerate(E))
 
 
@@ -475,7 +506,7 @@ class Fiber:
         tQy = np.zeros(Fiber.Count)
         tQz = np.zeros(Fiber.Count)
 
-        Node.getNode_E(Material.Gra_ang, Material.E_begin, Material.E_end,Material.Gra_law, Material.k)
+        Node.getNode_E(Material.Gra_ang, Material.E_begin, Material.E_end,Material.Gra_law, Material.k, Material.Gra_Type)
 
         for i in range(Fiber.Count):
             (ttArea, ttSeq) = Tri3.GetA([Node.Y[Fiber.PointI[i]], Node.Y[Fiber.PointJ[i]], Node.Y[Fiber.PointK[i]]],

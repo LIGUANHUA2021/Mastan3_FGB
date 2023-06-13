@@ -35,8 +35,9 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
         self.id = id
         self.initDialog()
         self.Law = 0
+        self.Gra_Type = 0
         self.comboBox.currentIndexChanged.connect(self.Law_add)
-
+        self.DirType_comboBox.currentIndexChanged.connect(self.Type_add)
         # self.MatType_comboBox.currentIndexChanged.connect(self.refresh_Material)
 
     def refresh_Material(self):
@@ -79,6 +80,11 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
         elif self.comboBox.currentText() == "Sigmoid law":
             self.Law = 2
 
+    def Type_add(self):
+        if self.DirType_comboBox.currentText() == "Single direction":
+            self.Gra_Type = 0
+        elif self.DirType_comboBox.currentText() == "Radial":
+            self.Gra_Type = 1
 
     def initDialog(self):
         self.MatIDInput.setEnabled(False)
@@ -205,7 +211,7 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
             if self.mw.Centerline_radioButton.isChecked() == True:
                 msaModel.Mat.Modify(tID=id, tE=tE, tnu=tnu, tFy=tfy, teu=teu, tType=tCMatType)
             elif self.mw.Outline_radioButton.isChecked() == True:
-                msaFEModel.Mat.Modify_gra(GID=1, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law,k=k)
+                msaFEModel.Mat.Modify_gra(GID=1, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law,Gra_Type=self.Gra_Type,k=k)
                 msaFEModel.Mat.Modify(tID=id, tE=tE, tnu=tnu, tFy=tfy, teu=teu, tType=tCMatType)
             self.mw.ResetTable()
             self.accept()

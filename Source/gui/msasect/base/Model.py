@@ -562,6 +562,7 @@ class msaFEModel:
         E_end = 0
         Gra_ang = 0
         Gra_law = 0
+        Gra_Type = 0
         GColor = 0
         k = 0
         #
@@ -578,7 +579,7 @@ class msaFEModel:
             msaFEModel.Mat.Color[tID] = tColor
             msaFEModel.Mat.G[tID] = tE / (2.0 * (1.0 + tnu))
 
-        def Add_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: int, GColor: str, k: float):
+        def Add_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: int, Gra_Type: int, GColor: str, k: float):
             msaFEModel.Mat.Gra += 1
             msaFEModel.Mat.Gra_ID = msaFEModel.Mat.Gra - 1
             msaFEModel.Mat.E_ref = E_ref
@@ -586,6 +587,7 @@ class msaFEModel:
             msaFEModel.Mat.E_end = E_end
             msaFEModel.Mat.Gra_ang = Gra_ang
             msaFEModel.Mat.Gra_law = Gra_law
+            msaFEModel.Mat.Gra_Type = Gra_Type
             msaFEModel.Mat.GColor = GColor
             msaFEModel.Mat.k = k
 
@@ -628,7 +630,7 @@ class msaFEModel:
             msaFEModel.Mat.eu[tID] = teu
             msaFEModel.Mat.Type[tID] = tType
 
-        def Modify_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: int, k: float):
+        def Modify_gra(GID: int, E_ref: float, E_begin: float, E_end: float, Gra_ang: float, Gra_law: int,Gra_Type: int, k: float):
             # if msaFEModel.CheckID(GID, msaFEModel.Mat.ID) == 0:
             #     print('Warning! Please input the correct material ID.')
             #     return
@@ -637,6 +639,7 @@ class msaFEModel:
             msaFEModel.Mat.E_end = E_end
             msaFEModel.Mat.Gra_ang = Gra_ang
             msaFEModel.Mat.Gra_law = Gra_law
+            msaFEModel.Mat.Gra_Type = Gra_Type
             msaFEModel.Mat.k = k
 
         # Reset Material
@@ -658,6 +661,7 @@ class msaFEModel:
             msaFEModel.Mat.E_end = 0
             msaFEModel.Mat.Gra_ang = 0
             msaFEModel.Mat.Gra_law = 0
+            msaFEModel.Mat.Gra_Type = 0
             msaFEModel.Mat.GColor = 0
             msaFEModel.Mat.k = 0
 
