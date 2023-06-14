@@ -335,6 +335,9 @@ class Node:
                         Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
                     else:
                         Node_E = E_begin + (E_end - E_begin) * (1 - (1-distance / D) ** k)  # k > 1
+                elif law == 3:
+                    Node_E = E_end * (distance / D) ** k + E_begin * (1 - (distance / D) ** k)
+
         else:
             D = np.sqrt(y_end ** 2 + z_end ** 2) - np.sqrt(y_begin ** 2 + z_begin ** 2)
             distance = np.sqrt(y ** 2 + z ** 2) - np.sqrt(y_begin ** 2 + z_begin ** 2)
@@ -361,7 +364,7 @@ class Node:
             DIS = []
             for i in range(Node.Count):
                 dis = 0
-                dis = Node.Y[i] * np.cos(theta) + Node.Z[i] * np.cos(theta)
+                dis = Node.Y[i] * np.cos(theta) + Node.Z[i] * np.sin(theta)
                 DIS.append(dis)
             min_index, max_index = Node.find_min_max_indexes(DIS)
             y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]

@@ -171,6 +171,11 @@
             <string>Sigmoid law</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>Power law1</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item row="1" column="1">

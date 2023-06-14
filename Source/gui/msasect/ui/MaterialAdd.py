@@ -96,6 +96,8 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
             self.Law = 1
         elif self.comboBox.currentText() == "Sigmoid law":
             self.Law = 2
+        elif self.comboBox.currentText() == "Power law1":
+            self.Law = 3
 
     def Type_add(self):
         if self.DirType_comboBox.currentText() == "Single direction":
