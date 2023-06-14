@@ -184,9 +184,9 @@ def MatIDPlot(ViewBox, ClChecked):
                                             msaModel.Point.Zo[msaModel.Segment.PointJ[i]]) / 2,
                                            (msaModel.Point.Yo[msaModel.Segment.PointI[i]] +
                                             msaModel.Point.Yo[msaModel.Segment.PointJ[i]]) / 2),
-                                            size=0, symbol='o', pen=pg.mkPen('g'), brush=pg.mkColor('g'),
+                                            size=0, symbol='o', pen=pg.mkPen('m'), brush=pg.mkColor('m'),
                                             movable=False, label=str(msaModel.Segment.MatID[i]),
-                                            labelOpts={"offset": (2, -7), "color": pg.mkColor('g')})
+                                            labelOpts={"offset": (2, -7), "color": pg.mkColor('m')})
                 Label.label().setFont(Font)
                 ViewBox.addItem(Label)
     else:
@@ -198,9 +198,9 @@ def MatIDPlot(ViewBox, ClChecked):
                          if msaFEModel.Outline.Type[j] == "S" and msaFEModel.Outline.GroupID[j] == i]
                 if ZList:
                     Label = pg.TargetItem(pos=(sum(ZList) / len(ZList), sum(YList) / len(YList)),
-                                              size=0, symbol='o', pen=pg.mkPen('g'), brush=pg.mkColor('g'),
+                                              size=0, symbol='o', pen=pg.mkPen('m'), brush=pg.mkColor('m'),
                                               movable=False, label=str(msaFEModel.Group.MatID[i]),
-                                              labelOpts={"offset": (10, 0), "color": pg.mkColor('g')})
+                                              labelOpts={"offset": (10, 0), "color": pg.mkColor('m')})
                     Label.label().setFont(Font)
                     ViewBox.addItem(Label)
     return
@@ -214,9 +214,9 @@ def PointIDPlot(ViewBox, ClChecked):
         if PointID:
             for i in PointID:
                 Label = pg.TargetItem(pos=(msaModel.Point.Zo[i], msaModel.Point.Yo[i]), size=0,
-                                      symbol='o', pen=pg.mkPen('c'), brush=pg.mkColor('c'),
+                                      symbol='o', pen=pg.mkPen('black'), brush=pg.mkColor('black'),
                                       movable=False, label=str(i),
-                                      labelOpts={"offset": (-5, 7), "color": pg.mkColor('c')})
+                                      labelOpts={"offset": (-5, 7), "color": pg.mkColor('black')})
                 Label.label().setFont(Font)
                 ViewBox.addItem(Label)
     else:
@@ -224,9 +224,9 @@ def PointIDPlot(ViewBox, ClChecked):
         if PointID:
             for i in PointID:
                 Label = pg.TargetItem(pos=(msaFEModel.Point.Zo[i], msaFEModel.Point.Yo[i]), size=0,
-                                      symbol='o', pen=pg.mkPen('c'), brush=pg.mkColor('c'),
+                                      symbol='o', pen=pg.mkPen('black'), brush=pg.mkColor('black'),
                                       movable=False, label=str(i),
-                                      labelOpts={"offset": (-5, 7), "color": pg.mkColor('c')})
+                                      labelOpts={"offset": (-5, 7), "color": pg.mkColor('black')})
                 Label.label().setFont(Font)
                 ViewBox.addItem(Label)
     return
@@ -241,8 +241,8 @@ def LineIDPlot(ViewBox, ClChecked):
             for i in LineID:
                 Label = pg.TargetItem(pos=((msaModel.Point.Zo[msaModel.Segment.PointI[i]] + msaModel.Point.Zo[msaModel.Segment.PointJ[i]]) / 2,
                                            (msaModel.Point.Yo[msaModel.Segment.PointI[i]] + msaModel.Point.Yo[msaModel.Segment.PointJ[i]]) / 2),
-                                           size=0, symbol='o', pen=pg.mkPen('y'), brush=pg.mkColor('y'), movable=False,
-                                           label=str(i), labelOpts={"offset": (2, 7), "color": pg.mkColor('y')})
+                                           size=0, symbol='o', pen=pg.mkPen('r'), brush=pg.mkColor('r'), movable=False,
+                                           label=str(i), labelOpts={"offset": (2, 7), "color": pg.mkColor('r')})
                 Label.label().setFont(Font)
                 ViewBox.addItem(Label)
     else:
@@ -251,8 +251,8 @@ def LineIDPlot(ViewBox, ClChecked):
             for i in LoopID:
                 Label = pg.TargetItem(pos=((msaFEModel.Point.Zo[msaFEModel.Loop.PointID[i][0]] + msaFEModel.Point.Zo[msaFEModel.Loop.PointID[i][1]]) / 2,
                                            (msaFEModel.Point.Yo[msaFEModel.Loop.PointID[i][0]] + msaFEModel.Point.Yo[msaFEModel.Loop.PointID[i][1]]) / 2),
-                                           size=0, symbol='o', pen=pg.mkPen('y'), brush=pg.mkColor('y'), movable=False,
-                                           label=str(i), labelOpts={"offset": (2, 0), "color": pg.mkColor('y')})
+                                           size=0, symbol='o', pen=pg.mkPen('r'), brush=pg.mkColor('r'), movable=False,
+                                           label=str(i), labelOpts={"offset": (2, 0), "color": pg.mkColor('r')})
                 Label.label().setFont(Font)
                 ViewBox.addItem(Label)
     return
@@ -355,9 +355,9 @@ def CoordPlot(ViewBox, ClChecked):
         if PointID:
             for i in PointID:
                 Label = pg.TargetItem(pos=(msaModel.Point.Zo[i], msaModel.Point.Yo[i]), size=0,
-                                      symbol='o', pen=pg.mkPen(255, 255, 255, 150), brush=pg.mkColor(255, 255, 255, 150), movable=False,
+                                      symbol='o', pen=pg.mkPen(0, 255, 255, 150), brush=pg.mkColor(0, 255, 255, 150), movable=False,
                                       label="({:.2f}, {:.2f})".format(msaModel.Point.Yo[i], msaModel.Point.Zo[i]),
-                                      labelOpts={"offset": (-5, -7), "color": pg.mkColor(255, 255, 255, 255)})
+                                      labelOpts={"offset": (-5, -7), "color": pg.mkColor(0, 255, 255, 255)})
                 Label.label().setFont(Font)
                 ViewBox.addItem(Label)
     else:
@@ -365,9 +365,9 @@ def CoordPlot(ViewBox, ClChecked):
         if PointID:
             for i in PointID:
                 Label = pg.TargetItem(pos=(msaFEModel.Point.Zo[i], msaFEModel.Point.Yo[i]), size=0,
-                                      symbol='o', pen=pg.mkPen(255, 255, 255, 150), brush=pg.mkColor(255, 255, 255, 150), movable=False,
+                                      symbol='o', pen=pg.mkPen(0, 255, 255, 150), brush=pg.mkColor(0, 255, 255, 150), movable=False,
                                       label="({:.2f}, {:.2f})".format(msaFEModel.Point.Yo[i], msaFEModel.Point.Zo[i]),
-                                      labelOpts={"offset": (-5, -7), "color": pg.mkColor(255, 255, 255, 255)})
+                                      labelOpts={"offset": (-5, -7), "color": pg.mkColor(0, 255, 255, 255)})
                 Label.label().setFont(Font)
                 ViewBox.addItem(Label)
     return
