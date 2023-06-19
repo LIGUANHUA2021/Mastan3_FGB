@@ -233,7 +233,13 @@ def StandardizeOmega(NodeV, NodeW, NodeOmega, FiberID, PointI, PointJ, PointK, c
 def GetJ(NodeY, NodeZ, NodeOmega, FiberID, PointI, PointJ, PointK, cys, czs, GPNum, G_ref):
     GJ = 0
     (GPs, Wts) = GQ.GaussPointsTri(GPNum)
+    # Y = []
+    # Z = []
+    # Omega = []
     for i in FiberID:
+        # Y.append(NodeY[PointI[i]])
+        # Z.append(NodeZ[PointI[i]])
+        # Omega.append(NodeOmega[PointI[i]])
         mat_id = Model.Fiber.MaterialID[i]
         E = Model.Fiber.Material_AVE[i]
         G = E / (2 * (1+Model.Material.nu[mat_id]))
@@ -243,6 +249,9 @@ def GetJ(NodeY, NodeZ, NodeOmega, FiberID, PointI, PointJ, PointK, cys, czs, GPN
                        cys, czs, GPNum, GPs, Wts)
         GJ += G * tJ
     J = GJ / G_ref
+    # print(Y)
+    # print(Z)
+    # print(Omega)
     return J
 
 
