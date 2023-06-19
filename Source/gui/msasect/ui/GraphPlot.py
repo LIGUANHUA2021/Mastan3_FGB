@@ -131,7 +131,7 @@ def OutlinePlot(ViewBox):
                     LType[i] = (ColorName[0] * 0,
                                 ColorName[1] * 0,
                                 ColorName[2] * 0,
-                                255, 2)
+                                255, 3)
                 ## Update the graph
                 SectPlot.setData(pos=Points,
                                  adj=Lines,
@@ -319,7 +319,7 @@ def FiberPlot(ViewBox, ClChecked):
                 for i in range(MeshSegment.Count):
                     Lines[i][0] = MeshNode.ID[MeshSegment.NodeI[FiberID[i]]]
                     Lines[i][1] = MeshNode.ID[MeshSegment.NodeJ[FiberID[i]]]
-                    LType[i] = (0, 0, 0, 100, 1)
+                    LType[i] = (0, 0, 0, 100, 2)
                 # Update the graph
                 FiberPlot.setData(pos=Points, adj=Lines, pen=LType, size=0, symbol=['o'] * MeshNode.Count, brush=pg.mkColor('r'), pxMode=True)
 
