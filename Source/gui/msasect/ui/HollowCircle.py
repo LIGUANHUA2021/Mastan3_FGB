@@ -74,10 +74,11 @@ class HollowCircle_Dialog(QDialog, Ui_HollowCircle_Dialog):
         self.G_inputlineEdit.setValidator(doubleValidator)
         self.fy_inputlineEdit.setValidator(doubleValidator)
         self.eu_inputlineEdit.setValidator(doubleValidator)
-
+        self.Num_lineEdit.setValidator(doubleValidator)
         self.B_inputlineEdit.setValidator(doubleValidator)
         self.D_inputlineEdit.setValidator(doubleValidator)
         self.tw_inputlineEdit.setValidator(doubleValidator)
+        self.Num_lineEdit.setText(str(50))
 
     @Slot()
     def on_Centerline_radioButton_clicked(self):
@@ -134,7 +135,7 @@ class HollowCircle_Dialog(QDialog, Ui_HollowCircle_Dialog):
         try:
             if len(self.E_inputlineEdit.text()) == 0 or len(self.G_inputlineEdit.text()) == 0 or len(
                     self.fy_inputlineEdit.text()) == 0 or len(self.B_inputlineEdit.text()) == 0 or len(self.D_inputlineEdit.text()) == 0 or len(
-                    self.tw_inputlineEdit.text()) == 0 :
+                    self.tw_inputlineEdit.text()) == 0 or len(self.eu_inputlineEdit.text()) == 0 or len(self.Num_lineEdit.text()) == 0:
                 showMesbox(self, 'Please input correct data!')
             else:
                 msaModel.ResetAll()
@@ -155,7 +156,8 @@ class HollowCircle_Dialog(QDialog, Ui_HollowCircle_Dialog):
                 B = float(self.B_inputlineEdit.text())
                 D = float(self.D_inputlineEdit.text())
                 tw = float(self.tw_inputlineEdit.text())
-                if tw>=0.5*B or tw>=0.5*D or B<0 or D<0 or tw<0 or tE<0 or tμ<0 or tfy<0 or teu<0:
+                num = int(self.Num_lineEdit.text())
+                if tw>=0.5*B or tw>=0.5*D or B<0 or D<0 or tw<0 or tE<0 or tμ<0 or tfy<0 or teu<0 or num<3:
                     showMesbox(self, 'Please input correct data!')
                 else:
                     MatIdDict = msaModel.Mat.ID
