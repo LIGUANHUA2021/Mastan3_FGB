@@ -90,9 +90,9 @@ class Ui_SolidCircle_Dialog(object):
         self.D_inputlineEdit.setObjectName("D_inputlineEdit")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.D_inputlineEdit)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.formLayout.setItem(4, QtWidgets.QFormLayout.ItemRole.LabelRole, spacerItem)
+        self.formLayout.setItem(5, QtWidgets.QFormLayout.ItemRole.LabelRole, spacerItem)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.formLayout.setItem(4, QtWidgets.QFormLayout.ItemRole.FieldRole, spacerItem1)
+        self.formLayout.setItem(5, QtWidgets.QFormLayout.ItemRole.FieldRole, spacerItem1)
         self.label_2 = QtWidgets.QLabel(self.Dimension_groupBox)
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_2)
@@ -117,6 +117,18 @@ class Ui_SolidCircle_Dialog(object):
         self.label_3 = QtWidgets.QLabel(self.Dimension_groupBox)
         self.label_3.setObjectName("label_3")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_3)
+        self.label_4 = QtWidgets.QLabel(self.Dimension_groupBox)
+        self.label_4.setObjectName("label_4")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_4)
+        self.Num_lineEdit = QtWidgets.QLineEdit(self.Dimension_groupBox)
+        self.Num_lineEdit.setStyleSheet("*{    \n"
+"    font: 9pt \"Segoe UI\";\n"
+"    color: rgb(0, 0, 0);\n"
+"    background: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.Num_lineEdit.setObjectName("Num_lineEdit")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.FieldRole, self.Num_lineEdit)
         self.verticalLayout_3.addLayout(self.formLayout)
         self.verticalLayout_2.addWidget(self.Dimension_groupBox)
         self.verticalLayout_2.setStretch(0, 1)
@@ -275,7 +287,8 @@ class Ui_SolidCircle_Dialog(object):
         SolidCircle_Dialog.setTabOrder(self.B_inputlineEdit, self.D_inputlineEdit)
         SolidCircle_Dialog.setTabOrder(self.D_inputlineEdit, self.Oy_lineEdit)
         SolidCircle_Dialog.setTabOrder(self.Oy_lineEdit, self.Oz_lineEdit)
-        SolidCircle_Dialog.setTabOrder(self.Oz_lineEdit, self.ColorButton)
+        SolidCircle_Dialog.setTabOrder(self.Oz_lineEdit, self.Num_lineEdit)
+        SolidCircle_Dialog.setTabOrder(self.Num_lineEdit, self.ColorButton)
         SolidCircle_Dialog.setTabOrder(self.ColorButton, self.OK_button)
         SolidCircle_Dialog.setTabOrder(self.OK_button, self.Cancel_pushButton)
 
@@ -290,6 +303,7 @@ class Ui_SolidCircle_Dialog(object):
         self.tw_label.setText(_translate("SolidCircle_Dialog", "D = "))
         self.label_2.setText(_translate("SolidCircle_Dialog", "Oy = "))
         self.label_3.setText(_translate("SolidCircle_Dialog", "Oz = "))
+        self.label_4.setText(_translate("SolidCircle_Dialog", "n Num.="))
         self.SolidCircle_groupBox.setTitle(_translate("SolidCircle_Dialog", "Material"))
         self.G_label.setText(_translate("SolidCircle_Dialog", " E  = "))
         self.ID_label.setText(_translate("SolidCircle_Dialog", "Color = "))

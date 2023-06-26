@@ -64,7 +64,7 @@ class SolidCircle_Dialog(QDialog, Ui_SolidCircle_Dialog):
         self.G_inputlineEdit.setValidator(doubleValidator)
         self.fy_inputlineEdit.setValidator(doubleValidator)
         self.eu_inputlineEdit.setValidator(doubleValidator)
-
+        self.Num_lineEdit.setValidator(doubleValidator)
         self.B_inputlineEdit.setValidator(doubleValidator)
         self.D_inputlineEdit.setValidator(doubleValidator)
         self.Oy_lineEdit.setValidator(doubleValidator)
@@ -73,6 +73,7 @@ class SolidCircle_Dialog(QDialog, Ui_SolidCircle_Dialog):
         self.D_inputlineEdit.setText(str(800))
         self.Oy_lineEdit.setText(str(400))
         self.Oz_lineEdit.setText(str(400))
+        self.Num_lineEdit.setText(str(50))
 
     @Slot()
     def on_Centerline_radioButton_clicked(self):
@@ -106,7 +107,7 @@ class SolidCircle_Dialog(QDialog, Ui_SolidCircle_Dialog):
         try:
             if len(self.E_inputlineEdit.text()) == 0 or len(self.G_inputlineEdit.text()) == 0 or len(
                     self.fy_inputlineEdit.text()) == 0 or len(self.B_inputlineEdit.text()) == 0 or len(self.D_inputlineEdit.text()) == 0 or len(
-                    self.Oy_lineEdit.text()) == 0 or len(self.Oz_lineEdit.text()) == 0:
+                    self.Oy_lineEdit.text()) == 0 or len(self.Oz_lineEdit.text()) == 0 or len(self.Num_lineEdit.text()) == 0 :
                 showMesbox(self, 'Please input correct data!')
             else:
                 msaModel.ResetAll()
@@ -128,7 +129,8 @@ class SolidCircle_Dialog(QDialog, Ui_SolidCircle_Dialog):
                 D = float(self.D_inputlineEdit.text())
                 Oy = float(self.Oy_lineEdit.text())
                 Oz = float(self.Oz_lineEdit.text())
-                if B<0 or D<0 or tE<0 or tμ<0 or tfy<0 or teu<0:
+                num = int(self.Num_lineEdit.text())
+                if B<0 or D<0 or tE<0 or tμ<0 or tfy<0 or teu<0 or num<3:
                     showMesbox(self, 'Please input correct data!')
                 else:
                     MatIdDict = msaFEModel.Mat.ID
