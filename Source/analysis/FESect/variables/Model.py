@@ -547,6 +547,13 @@ class Fiber:
         Fiber.Iz = dict(enumerate(tIz))
         Fiber.Iyz = dict(enumerate(tIyz))
         Fiber.Seq = dict(enumerate(tSeq))
+        Fiber.Material_AVE = dict(enumerate(Fiber.Material_AVE))
+        # print('Y')
+        # print(list(Fiber.cy.values()))
+        # print('Z')
+        # print(list(Fiber.cz.values()))
+        # print('E')
+        # print(list(Fiber.Material_AVE.values()))
         return
 
     @staticmethod

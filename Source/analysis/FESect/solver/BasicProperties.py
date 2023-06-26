@@ -233,8 +233,8 @@ def StandardizeOmega(NodeV, NodeW, NodeOmega, FiberID, PointI, PointJ, PointK, c
 def GetJ(NodeY, NodeZ, NodeOmega, FiberID, PointI, PointJ, PointK, cys, czs, GPNum, G_ref):
     GJ = 0
     (GPs, Wts) = GQ.GaussPointsTri(GPNum)
-    # Y = []
-    # Z = []
+    Y = []
+    Z = []
     # Omega = []
     for i in FiberID:
         # Y.append(NodeY[PointI[i]])
@@ -413,6 +413,9 @@ def CalSectProps(RunAutoMesh, E_ref):
     #(SP.Zv, SP.Zw) = GetZyZz(Model.Node.V, Model.Node.W, Model.Fiber.ID,
                              #Model.Fiber.PointI, Model.Fiber.PointJ, Model.Fiber.PointK,
                              #Model.Fiber.Area, Model.Fiber.cv, Model.Fiber.cw, SP.cvp, SP.cwp, E_ref)
+    # print('EA')
+    # E = list(Model.Fiber.Material_AVE.values())
+    # print(E)
     return
 
 
