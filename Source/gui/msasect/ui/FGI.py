@@ -154,8 +154,8 @@ class FGI_Dialog(QDialog, Ui_FGI_Dialog):
                 if Ei<0 or E0<0 or k<0 or tμ<0 or tfy<0 or teu<0 or B1<0 or B2<0 or D<0 or StripNum<3 or D<tf*2 or B1<=tw or B2<=tw :
                     showMesbox(self, 'Please input correct data!')
                 else:
-                    values = [int(i * 255 / StripNum) for i in range(StripNum)]
-                    colors = ["#%02x%02x%02x" % (int(g), 255, 255) for g in values]
+                    values = [int(i * (255-30) / StripNum+32) for i in range(StripNum)]
+                    colors = ["#%02x%02x%02x" % (int(g), int(g), int(g)) for g in values]
                     if len(MatIdDict)!=0:
                         id = max(MatIdDict)
                     else:
