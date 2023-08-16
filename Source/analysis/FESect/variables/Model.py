@@ -17,6 +17,7 @@
 # =========================================================================================
 from itertools import zip_longest
 import numpy as np
+from collections import defaultdict
 # =========================================================================================
 # Import internal functions
 from analysis.FESect.element import Tri3
@@ -36,15 +37,15 @@ class Material:
     eu = {}
     ##
     Gra = 0
-    Gra_ID = 0
-    E_ref = 0
-    E_begin = 0
-    E_end = 0
-    Gra_ang = 0
-    Gra_law = 0
-    Gra_Type  = 0
-    GColor = 0
-    k = 0
+    Gra_ID = {}
+    E_ref = {}
+    E_begin = {}
+    E_end = {}
+    Gra_ang = {}
+    Gra_law = {}
+    Gra_Type  = {}
+    GColor = {}
+    k = {}
 
     MaxTenStrn = {}  ## Maximum tension strain
     MaxComStrn = {}  ## Maximum Compressive strain
@@ -67,15 +68,15 @@ class Material:
         Material.MatProperty = {}
         Material.Type = {}
         Material.Gra = 0
-        Material.Gra_ID = 0
-        Material.E_ref = 0
-        Material.E_begin = 0
-        Material.E_end = 0
-        Material.Gra_ang = 0
-        Material.Gra_law = 0
-        Material.Gra_Type = 0
-        Material.GColor = 0
-        Material.k = 0
+        Material.Gra_ID = {}
+        Material.E_ref = {}
+        Material.E_begin = {}
+        Material.E_end = {}
+        Material.Gra_ang = {}
+        Material.Gra_law = {}
+        Material.Gra_Type = {}
+        Material.GColor = {}
+        Material.k = {}
         return
 
     def readMat(MatInfo):
@@ -360,33 +361,69 @@ class Node:
     # Get y_begin, z_begin
     @staticmethod
     def getNodeMaxMin(theta, Type):
-        if Type == 0:
-            DIS = []
-            for i in range(Node.Count):
-                dis = 0
-                dis = Node.Y[i] * np.cos(theta) + Node.Z[i] * np.sin(theta)
-                DIS.append(dis)
-            min_index, max_index = Node.find_min_max_indexes(DIS)
-            y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
-            y_end, z_end = Node.Y[max_index], Node.Z[max_index]
-        else:
-            DIS = []
-            for i in range(Node.Count):
-                dis = 0
-                dis = np.sqrt(Node.Y[i] ** 2 + Node.Z[i] **2)
-                DIS.append(dis)
-            min_index, max_index = Node.find_min_max_indexes(DIS)
-            y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
-            y_end, z_end = Node.Y[max_index], Node.Z[max_index]
-        return y_begin, z_begin, y_end, z_end
+
+        split_dict = defaultdict(list)
+
+        dictionary = Fiber.MaterialID
+        # 将键值对的值添加到新字典中对应值的列表中
+        for key, value in dictionary.items():
+            split_dict[value].append(key)
+
+        result = []
+
+        # 遍历新字典中的每个键值对
+        for value_list in split_dict.values():
+            # 判断列表的长度
+            if len(value_list) > 0:
+                # 如果列表长度大于1，说明有多个键对应相同的值，可以进行拆分
+                sub_dict = {}
+                for key in value_list:
+                    sub_dict[key] = dictionary[key]
+                result.append(sub_dict)
+        Fiber_Mat = sorted(result, key=lambda x: next(iter(x.values())))
+        values = [[value for value in sub_dict.values()] for sub_dict in Fiber_Mat]
+        Grad_Group = [[key for key in sub_dict.keys()] for sub_dict in Fiber_Mat]
+        Groups =  [row[0] for row in values]
+        Group_maxminCoor = {}
+        y_begin, z_begin, y_end, z_end = 0, 0, 0, 0#[]
+        y_begin_list, z_begin_list, y_end_list, z_end_list = [], [], [], []
+        min_dis = Node.Y[int(Grad_Group[0][0])] * np.cos(theta[1]) + Node.Z[int(Grad_Group[0][0])] * np.sin(theta[1])
+        max_dis = Node.Y[int(Grad_Group[0][0])] * np.cos(theta[1]) + Node.Z[int(Grad_Group[0][0])] * np.sin(theta[1])
+        for i in range(len(Grad_Group)):
+            for j in range(len(Grad_Group[i])):
+                if Type == 0:
+                    dis = Node.Y[int(Grad_Group[i][j])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Group[i][j])] * np.sin(theta[i+1])
+                    if dis <= min_dis:
+                        min_dis = dis
+                        y_begin, z_begin = Node.Y[int(Grad_Group[i][j])], Node.Z[int(Grad_Group[i][j])]
+                    if dis >= max_dis:
+                        max_dis = dis
+                        y_end, z_end = Node.Y[int(Grad_Group[i][j])], Node.Z[int(Grad_Group[i][j])]
+                    # Group_maxminCoor[Groups[i]] = [y_begin, z_begin, y_end, z_end]
+                else:
+                    DIS = []
+                    for i in range(Node.Count):
+                        dis = 0
+                        dis = np.sqrt(Node.Y[i] ** 2 + Node.Z[i] **2)
+                        DIS.append(dis)
+                    min_index, max_index = Node.find_min_max_indexes(DIS)
+                    y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
+                    y_end, z_end = Node.Y[max_index], Node.Z[max_index]
+            y_begin_list.append(y_begin)
+            z_begin_list.append(z_begin)
+            y_end_list.append(y_end)
+            z_end_list.append(z_end)
+        return y_begin_list, z_begin_list, y_end_list, z_end_list, Grad_Group
 
     @staticmethod
     def getNode_E(angle, E_begin, E_end, law, k, Type):
         E = []
-        angle = angle / 180 * np.pi
-        y_begin, z_begin, y_end, z_end = Node.getNodeMaxMin(angle, Type)
+        y_begin_list, z_begin_list, y_end_list, z_end_list, Grad_Group = Node.getNodeMaxMin(angle, Type)
         for ii in range(Node.Count):
-            E.append (Node.Calculate_E(Node.Y[ii], Node.Z[ii], y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k, Type))
+            for j, row in enumerate(Grad_Group):
+                if ii in row:
+                    Angle = angle[j+1] / 180 * np.pi
+                    E.append (Node.Calculate_E(Node.Y[ii], Node.Z[ii], y_begin_list[j], z_begin_list[j], y_end_list[j], z_end_list[j], Angle, E_begin[j+1], E_end[j+1], law[j+1], k[j+1], Type[j+1]))
         Node.Node_E = dict(enumerate(E))
 
 

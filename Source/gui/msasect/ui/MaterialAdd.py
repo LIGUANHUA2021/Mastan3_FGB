@@ -145,7 +145,7 @@ class MatAdd_Dialog(QDialog, Ui_MatAddDialog):
                         msaModel.Mat.Add(tID=id, tE=tE, tnu=tμ, tFy=tfy, tDensity=999999, teu=teu, tType=self.tMatType, tColor='#aaffff')
                     elif self.mw.Outline_radioButton.isChecked():
                         msaFEModel.Mat.Add(tID=id, tE=tE, tnu=tμ, tFy=tfy, tDensity=999999, teu=teu, tType=self.tMatType, tColor='#aaffff')
-                        msaFEModel.Mat.Add_gra(GID=1, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law,Gra_Type = self.Gra_Type, GColor='#aaffff', k= k)
+                        msaFEModel.Mat.Add_gra(GID=id, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law,Gra_Type = self.Gra_Type, GColor='#aaffff', k= k)
                     self.mw.ResetTable()
                     self.accept()
         except:

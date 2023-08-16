@@ -213,7 +213,7 @@ class MatModifyDialog(QDialog, Ui_MatAddDialog):
             if self.mw.Centerline_radioButton.isChecked() == True:
                 msaModel.Mat.Modify(tID=id, tE=tE, tnu=tnu, tFy=tfy, teu=teu, tType=tCMatType)
             elif self.mw.Outline_radioButton.isChecked() == True:
-                msaFEModel.Mat.Modify_gra(GID=1, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law,Gra_Type=self.Gra_Type,k=k)
+                msaFEModel.Mat.Modify_gra(GID=id, E_ref=1, E_begin=E_begin, E_end=E_end, Gra_ang=Gra_ang, Gra_law=self.Law,Gra_Type=self.Gra_Type,k=k)
                 msaFEModel.Mat.Modify(tID=id, tE=tE, tnu=tnu, tFy=tfy, teu=teu, tType=tCMatType)
             self.mw.ResetTable()
             self.accept()

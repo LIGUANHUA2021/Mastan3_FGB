@@ -279,6 +279,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.FGRec_toolButton.setIconSize(QSize(32, 32))
         self.FGI_toolButton.setIcon(QIcon('ui/ico/TemplateIcon/FG-I.ico'))
         self.FGI_toolButton.setIconSize(QSize(32, 32))
+        self.MattableWidget.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.MattableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+
         #
         self.graphicsView.setBackground('white')
         self.UBorder = self.graphicsView.addPlot(row=0, col=0, rowspan=1, enableMouse=False, enableMenu=False,
@@ -438,19 +441,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.importDataToPointTable()
         self.MattableWidget.setRowCount(0)
         self.importDataToMatTable()
-        # msaModel.Node.Reset()
-        # msaModel.Fiber.Reset()
-        # self.StatusOutput.clear()
-        self.ResetSPTable()
-        self.ResetPlot()
-        GlobalBuckling.Reset()
-        SectProperty.Reset()
-        FESectProperty.Reset()
-        YieldSAnalResults.ResetAllResults()
-        FEYieldSAnalResults.ResetAllResults()
-        MomentCurvatureResults.ResetMyCurva()
-        MomentCurvatureResults.ResetMzCurva()
-        CompositeSectionModulus.ResetCompSectMod()
+        # self.ResetSPTable()
+        # self.ResetPlot()
+        # GlobalBuckling.Reset()
+        # SectProperty.Reset()
+        # FESectProperty.Reset()
+        # YieldSAnalResults.ResetAllResults()
+        # FEYieldSAnalResults.ResetAllResults()
+        # MomentCurvatureResults.ResetMyCurva()
+        # MomentCurvatureResults.ResetMzCurva()
+        # CompositeSectionModulus.ResetCompSectMod()
 
 
     def importDataToMatTable(self):
@@ -564,10 +564,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 #     msaModel.Point.Reset()
                 #     return
             elif self.Outline_radioButton.isChecked():
+                self.PointtableWidget.setColumnCount(3)
+                self.PointtableWidget.setRowCount(msaFEModel.Point.Count)
+                self.PointtableWidget.setHorizontalHeaderLabels(['ID', 'Y', 'Z'])
                 for i in msaFEModel.Point.ID:
-                    self.PointtableWidget.setColumnCount(3)
-                    self.PointtableWidget.setRowCount(msaFEModel.Point.Count)
-                    self.PointtableWidget.setHorizontalHeaderLabels(['ID', 'Y', 'Z'])
                     for j in range(3):
                         Item = QTableWidgetItem()
                         Item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
