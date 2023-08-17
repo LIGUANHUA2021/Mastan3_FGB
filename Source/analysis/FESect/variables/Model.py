@@ -317,27 +317,22 @@ class Node:
     def Calculate_E(y, z, y_begin, z_begin, y_end, z_end, angle, E_begin, E_end, law, k, Type):
         if Type == 0:
             B = np.array([np.cos(angle), np.sin(angle)])
-            A = np.array([y - y_begin, z- z_begin])
-            A_length = np.linalg.norm(A)
+            # A = np.array([y - y_begin, z- z_begin])
+            # A_length = np.linalg.norm(A)
             D = (y_end - y_begin) * np.cos(angle) + (z_end - z_begin) * np.sin(angle)
-            if A_length == 0:
-                Node_E = E_begin
-            elif A_length == D:
-                Node_E = E_end
-            else:
-                distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
+            distance = (y - y_begin) * np.cos(angle) + (z - z_begin) * np.sin(angle)
 
-                if law == 0:
+            if law == 0:
+                Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
+            elif law == 1:
+                Node_E = E_begin * np.exp((distance / D) * np.log(E_end / E_begin))
+            elif law == 2:
+                if distance <= D / 2:
                     Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
-                elif law == 1:
-                    Node_E = E_begin * np.exp((distance / D) * np.log(E_end / E_begin))
-                elif law == 2:
-                    if distance <= D / 2:
-                        Node_E = E_begin + (E_end - E_begin) * (distance / D) ** k
-                    else:
-                        Node_E = E_begin + (E_end - E_begin) * (1 - (1-distance / D) ** k)  # k > 1
-                elif law == 3:
-                    Node_E = E_end * (distance / D) ** k + E_begin * (1 - (distance / D) ** k)
+                else:
+                    Node_E = E_begin + (E_end - E_begin) * (1 - (1-distance / D) ** k)  # k > 1
+            elif law == 3:
+                Node_E = E_end * (distance / D) ** k + E_begin * (1 - (distance / D) ** k)
 
         else:
             D = np.sqrt(y_end ** 2 + z_end ** 2) - np.sqrt(y_begin ** 2 + z_begin ** 2)
@@ -387,9 +382,10 @@ class Node:
         Group_maxminCoor = {}
         y_begin, z_begin, y_end, z_end = 0, 0, 0, 0#[]
         y_begin_list, z_begin_list, y_end_list, z_end_list = [], [], [], []
-        min_dis = Node.Y[int(Grad_Group[0][0])] * np.cos(theta[1]) + Node.Z[int(Grad_Group[0][0])] * np.sin(theta[1])
-        max_dis = Node.Y[int(Grad_Group[0][0])] * np.cos(theta[1]) + Node.Z[int(Grad_Group[0][0])] * np.sin(theta[1])
+
         for i in range(len(Grad_Group)):
+            min_dis = Node.Y[int(Grad_Group[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Group[i][0])] * np.sin(theta[i+1])
+            max_dis = Node.Y[int(Grad_Group[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Group[i][0])] * np.sin(theta[i+1])
             for j in range(len(Grad_Group[i])):
                 if Type == 0:
                     dis = Node.Y[int(Grad_Group[i][j])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Group[i][j])] * np.sin(theta[i+1])
