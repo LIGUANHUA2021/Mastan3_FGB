@@ -376,26 +376,38 @@ class Node:
                     sub_dict[key] = dictionary[key]
                 result.append(sub_dict)
         Fiber_Mat = sorted(result, key=lambda x: next(iter(x.values())))
+        # print(Fiber_Mat)
         values = [[value for value in sub_dict.values()] for sub_dict in Fiber_Mat]
         Grad_Group = [[key for key in sub_dict.keys()] for sub_dict in Fiber_Mat]
         Groups =  [row[0] for row in values]
         Group_maxminCoor = {}
-        y_begin, z_begin, y_end, z_end = 0, 0, 0, 0#[]
-        y_begin_list, z_begin_list, y_end_list, z_end_list = [], [], [], []
 
+        Grad_Point = []
         for i in range(len(Grad_Group)):
-            min_dis = Node.Y[int(Grad_Group[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Group[i][0])] * np.sin(theta[i+1])
-            max_dis = Node.Y[int(Grad_Group[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Group[i][0])] * np.sin(theta[i+1])
+            Point = []
             for j in range(len(Grad_Group[i])):
-                if Type == 0:
-                    dis = Node.Y[int(Grad_Group[i][j])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Group[i][j])] * np.sin(theta[i+1])
+                Point.append(Fiber.PointI[Grad_Group[i][j]])
+                Point.append(Fiber.PointJ[Grad_Group[i][j]])
+                Point.append(Fiber.PointK[Grad_Group[i][j]])
+            unique_num_Point = list(set(Point))
+            Grad_Point.append(unique_num_Point)
+        # print(Grad_Point)
+        #[]
+        y_begin_list, z_begin_list, y_end_list, z_end_list = [], [], [], []
+        for i in range(len(Grad_Point)):
+            y_begin, z_begin, y_end, z_end = 0, 0, 0, 0
+            min_dis = Node.Y[int(Grad_Point[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Point[i][0])] * np.sin(theta[i+1])
+            max_dis = Node.Y[int(Grad_Point[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Point[i][0])] * np.sin(theta[i+1])
+            for j in range(len(Grad_Point[i])):
+                if Type[i + 1] == 0:
+                    dis = Node.Y[int(Grad_Point[i][j])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Point[i][j])] * np.sin(theta[i+1])
                     if dis <= min_dis:
                         min_dis = dis
-                        y_begin, z_begin = Node.Y[int(Grad_Group[i][j])], Node.Z[int(Grad_Group[i][j])]
+                        y_begin, z_begin = Node.Y[int(Grad_Point[i][j])], Node.Z[int(Grad_Point[i][j])]
                     if dis >= max_dis:
                         max_dis = dis
-                        y_end, z_end = Node.Y[int(Grad_Group[i][j])], Node.Z[int(Grad_Group[i][j])]
-                    # Group_maxminCoor[Groups[i]] = [y_begin, z_begin, y_end, z_end]
+                        y_end, z_end = Node.Y[int(Grad_Point[i][j])], Node.Z[int(Grad_Point[i][j])]
+                        # Group_maxminCoor[Groups[i]] = [y_begin, z_begin, y_end, z_end]
                 else:
                     DIS = []
                     for i in range(Node.Count):
@@ -409,18 +421,31 @@ class Node:
             z_begin_list.append(z_begin)
             y_end_list.append(y_end)
             z_end_list.append(z_end)
-        return y_begin_list, z_begin_list, y_end_list, z_end_list, Grad_Group
+        return y_begin_list, z_begin_list, y_end_list, z_end_list, Grad_Point
 
     @staticmethod
     def getNode_E(angle, E_begin, E_end, law, k, Type):
         E = []
-        y_begin_list, z_begin_list, y_end_list, z_end_list, Grad_Group = Node.getNodeMaxMin(angle, Type)
-        for ii in range(Node.Count):
-            for j, row in enumerate(Grad_Group):
-                if ii in row:
-                    Angle = angle[j+1] / 180 * np.pi
-                    E.append (Node.Calculate_E(Node.Y[ii], Node.Z[ii], y_begin_list[j], z_begin_list[j], y_end_list[j], z_end_list[j], Angle, E_begin[j+1], E_end[j+1], law[j+1], k[j+1], Type[j+1]))
+        y_begin_list, z_begin_list, y_end_list, z_end_list, Grad_Point = Node.getNodeMaxMin(angle, Type)
+        # print(y_begin_list, z_begin_list, y_end_list, z_end_list)
+        # print(angle)
+        row_indices = []
+        for num in range(Node.Count):
+            for i, row in enumerate(Grad_Point):
+                if num in row:
+                    row_indices.append(i)
+                    break
+        print(row_indices)
+        for i in range(Node.Count):
+            Angle = angle[int(row_indices[i]+1)] / 180 * np.pi
+            E.append (Node.Calculate_E(Node.Y[i], Node.Z[i], y_begin_list[int(row_indices[i])], z_begin_list[int(row_indices[i])], y_end_list[int(row_indices[i])], z_end_list[int(row_indices[i])], Angle,
+                                       E_begin[int(row_indices[i]+1)], E_end[int(row_indices[i]+1)], law[int(row_indices[i]+1)], k[int(row_indices[i]+1)], Type[int(row_indices[i]+1)]))
+        # print(E)
         Node.Node_E = dict(enumerate(E))
+        # print(Node.Count)
+        # print(Node.Y)
+        # print(Node.Z)
+        # print(Node.Node_E)
 
 
 class Segment:
