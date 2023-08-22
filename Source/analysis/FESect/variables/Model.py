@@ -435,7 +435,7 @@ class Node:
                 if num in row:
                     row_indices.append(i)
                     break
-        print(row_indices)
+        # print(row_indices)
         for i in range(Node.Count):
             Angle = angle[int(row_indices[i]+1)] / 180 * np.pi
             E.append (Node.Calculate_E(Node.Y[i], Node.Z[i], y_begin_list[int(row_indices[i])], z_begin_list[int(row_indices[i])], y_end_list[int(row_indices[i])], z_end_list[int(row_indices[i])], Angle,
