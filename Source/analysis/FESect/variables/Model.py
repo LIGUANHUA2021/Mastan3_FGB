@@ -333,6 +333,8 @@ class Node:
                     Node_E = E_begin + (E_end - E_begin) * (1 - (1-distance / D) ** k)  # k > 1
             elif law == 3:
                 Node_E = E_end * (distance / D) ** k + E_begin * (1 - (distance / D) ** k)
+            if Node_E > E_end and Node_E > E_begin:
+                Node_E = min(E_end, E_begin)
 
         else:
             D = np.sqrt(y_end ** 2 + z_end ** 2) - np.sqrt(y_begin ** 2 + z_begin ** 2)
@@ -396,8 +398,12 @@ class Node:
         y_begin_list, z_begin_list, y_end_list, z_end_list = [], [], [], []
         for i in range(len(Grad_Point)):
             y_begin, z_begin, y_end, z_end = 0, 0, 0, 0
-            min_dis = Node.Y[int(Grad_Point[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Point[i][0])] * np.sin(theta[i+1])
-            max_dis = Node.Y[int(Grad_Point[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Point[i][0])] * np.sin(theta[i+1])
+            if Type[i + 1] == 0:
+                min_dis = Node.Y[int(Grad_Point[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Point[i][0])] * np.sin(theta[i+1])
+                max_dis = Node.Y[int(Grad_Point[i][0])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Point[i][0])] * np.sin(theta[i+1])
+            else:
+                min_dis = 0
+                max_dis = np.sqrt(Node.Y[int(Grad_Point[i][0])] ** 2 + Node.Z[int(Grad_Point[i][0])] ** 2)
             for j in range(len(Grad_Point[i])):
                 if Type[i + 1] == 0:
                     dis = Node.Y[int(Grad_Point[i][j])] * np.cos(theta[i+1]) + Node.Z[int(Grad_Point[i][j])] * np.sin(theta[i+1])
@@ -409,14 +415,13 @@ class Node:
                         y_end, z_end = Node.Y[int(Grad_Point[i][j])], Node.Z[int(Grad_Point[i][j])]
                         # Group_maxminCoor[Groups[i]] = [y_begin, z_begin, y_end, z_end]
                 else:
-                    DIS = []
-                    for i in range(Node.Count):
-                        dis = 0
-                        dis = np.sqrt(Node.Y[i] ** 2 + Node.Z[i] **2)
-                        DIS.append(dis)
-                    min_index, max_index = Node.find_min_max_indexes(DIS)
-                    y_begin, z_begin = Node.Y[min_index], Node.Z[min_index]
-                    y_end, z_end = Node.Y[max_index], Node.Z[max_index]
+                    dis = np.sqrt(Node.Y[int(Grad_Point[i][j])] ** 2 + Node.Z[int(Grad_Point[i][j])] ** 2)
+                    if dis <= min_dis:
+                        min_dis = dis
+                        y_begin, z_begin = Node.Y[int(Grad_Point[i][j])], Node.Z[int(Grad_Point[i][j])]
+                    if dis >= max_dis:
+                        max_dis = dis
+                        y_end, z_end = Node.Y[int(Grad_Point[i][j])], Node.Z[int(Grad_Point[i][j])]
             y_begin_list.append(y_begin)
             z_begin_list.append(z_begin)
             y_end_list.append(y_end)
@@ -443,9 +448,9 @@ class Node:
         # print(E)
         Node.Node_E = dict(enumerate(E))
         # print(Node.Count)
-        # print(Node.Y)
-        # print(Node.Z)
-        # print(Node.Node_E)
+        print(Node.Y)
+        print(Node.Z)
+        print(Node.Node_E)
 
 
 class Segment:
